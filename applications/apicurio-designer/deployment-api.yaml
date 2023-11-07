@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: apicurio-designer
+    component: apicurio-designer-api
+  name: apicurio-designer-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: apicurio-designer-api
+  template:
+    metadata:
+      labels:
+        app: apicurio-designer
+        component: apicurio-designer-api
+    spec:
+      containers:
+        - image: >-
+            quay.io/apicurio/apicurio-api-designer-mem@sha256:a3a58b5428185d4b114e98dd669d2aa5b83d3687917f7be526c432de81ca1be0
+          name: apicurio-designer-api
+          ports:
+            - name: web
+              containerPort: 8080
+              protocol: TCP
+          env:
+            - name: DESIGNER_LOG_LEVEL
+              value: DEBUG
+            - name: DESIGNER_ACCESS_LOG_ENABLE
+              value: 'true'
+            - name: QUARKUS_PROFILE
+              value: prod
+            - name: DESIGNER_CORS_ALLOWED_ORIGINS
+              value: '*'
+          resources:
+            limits:
+              cpu: 400m
+              memory: 1000Mi
+            requests:
+              cpu: 200m
+              memory: 500Mi
+          livenessProbe:
+            httpGet:
+              path: /apis/designer/v0/system/info
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 10
+            timeoutSeconds: 5
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /apis/designer/v0/system/info
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 10
+            timeoutSeconds: 5
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+

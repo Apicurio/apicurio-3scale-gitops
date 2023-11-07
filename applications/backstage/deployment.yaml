@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: backstage
+    component: backstage
+  name: backstage
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backstage
+  template:
+    metadata:
+      labels:
+        app: backstage
+        component: backstage
+    spec:
+      containers:
+        - image: >-
+            quay.io/apicurio/backstage@sha256:b021b486e03d01823ccd624264d89e746803112b0a8537c64e42718e5797d8e3
+          name: backstage
+          ports:
+            - name: 'app'
+              containerPort: 7007
+              protocol: TCP
+          env:
+            - name: POSTGRES_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: rds-backstage-credentials
+                  key: host
+            - name: POSTGRES_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: rds-backstage-credentials
+                  key: port
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: rds-backstage-credentials
+                  key: user
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: rds-backstage-credentials
+                  key: password
+            - name: APP_CONFIG_BACKEND
+              value: "https://backstage-rhaf-apicurio-registry.apps.dev-eng-ocp4-mas.dev.3sca.net/"
+            - name: APP_CONFIG_APP
+              value: "https://backstage-rhaf-apicurio-registry.apps.dev-eng-ocp4-mas.dev.3sca.net/"
+            - name: APICURIO_ENDPOINT
+              value: "https://apicurio-registry-rhaf-apicurio-registry.apps.dev-eng-ocp4-mas.dev.3sca.net/"
+            - name: "APP_CONFIG_backend_database_connection_ssl_require"
+              value: "true"
+            - name: "APP_CONFIG_backend_database_connection_ssl_rejectUnauthorized"
+              value: "false"
+            - name: "NODE_TLS_REJECT_UNAUTHORIZED"
+              value: "0"
+          resources:
+            limits:
+              cpu: 900m
+              memory: 1000Mi
+            requests:
+              cpu: 500m
+              memory: 500Mi

@@ -1,0 +1,15 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    description: Route for application's service.
+  labels:
+    app: keycloak
+  name: keycloak
+spec:
+  tls:
+    termination: edge
+  to:
+    kind: Service
+    name: keycloak
+    weight: 100
