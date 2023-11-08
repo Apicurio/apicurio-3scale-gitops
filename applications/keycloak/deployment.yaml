@@ -90,18 +90,18 @@ spec:
                   key: password
           resources:
             limits:
+              cpu: 900m
+              memory: 2000Mi
+            requests:
               cpu: 500m
               memory: 1000Mi
-            requests:
-              cpu: 200m
-              memory: 400Mi
           livenessProbe:
             httpGet:
               path: /health/live
               port: 8080
               scheme: HTTP
             failureThreshold: 3
-            initialDelaySeconds: 45
+            initialDelaySeconds: 60
             periodSeconds: 10
             successThreshold: 1
             timeoutSeconds: 1
@@ -111,7 +111,7 @@ spec:
               port: 8080
               scheme: HTTP
             failureThreshold: 3
-            initialDelaySeconds: 60
+            initialDelaySeconds: 90
             periodSeconds: 10
             successThreshold: 1
             timeoutSeconds: 1
