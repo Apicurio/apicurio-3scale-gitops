@@ -3,7 +3,7 @@
 - [3scale DEV](#3scale-dev)
 - [Useful links](#useful-links)
   - [Infrastructure](#infrastructure)
-  - [Application](#application)
+  - [Applications](#applications)
 - [Cluster and Namespace](#cluster-and-namespace)
 - [This Repository](#this-repository)
   - [Manifests](#manifests)
@@ -30,21 +30,21 @@ deploy DEV versions of our Apicurio applications.
 
 ## Infrastructure
   
--  [OpenShift Console](https://console-openshift-console.apps.dev-eng-ocp4-mas.dev.3sca.net/)
+- [OpenShift Console](https://console-openshift-console.apps.dev-eng-ocp4-mas.dev.3sca.net/)
 
--  [ArgoCd Console](https://gitops.apps.dev-eng-ocp4-mas.dev.3sca.net/applications)
+- [ArgoCd Console](https://gitops.apps.dev-eng-ocp4-mas.dev.3sca.net/applications)
 
--  [Vault](https://vault.apps.dev-eng-ocp4-mas.dev.3sca.net/)
+- [Vault](https://vault.apps.dev-eng-ocp4-mas.dev.3sca.net/)
 
--  [Keycloak](https://keycloak-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/)
+## Applications
 
-## Application
+- [Keycloak](https://keycloak-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/)
 
--  [Backstage](https://backstage-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/)
+- [Backstage](https://backstage-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/)
   
--  [Apicurio Registry](https://apicurio-registry-ui-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/)
+- [Apicurio Registry](https://apicurio-registry-ui-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/)
 
--  [Apicurio Designer](https://apicurio-designer-ui-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/)
+- [Apicurio Designer](https://apicurio-designer-ui-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/)
 
 # Cluster and Namespace
 
