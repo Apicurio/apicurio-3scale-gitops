@@ -28,6 +28,15 @@ spec:
             - name: DESIGNER_API_URL
               value: >-
                 https://apicurio-designer-api-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/apis/designer/v0
+
+            - name: DESIGNER_AUTH_TYPE
+              value: oidc
+            - name: DESIGNER_AUTH_URL
+              value: https://keycloak-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/realms/apicurio
+            - name: DESIGNER_AUTH_CLIENT_ID
+              value: designer-ui
+            - name: DESIGNER_AUTH_REDIRECT_URL
+              value: https://apicurio-designer-ui-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/
           resources:
             limits:
               cpu: 200m
