@@ -68,7 +68,7 @@ spec:
                   key: password
             - name: REGISTRY_DATASOURCE_URL
               value: >-
-                jdbc:postgresql://${REGISTRY_DATASOURCE_HOST}:${REGISTRY_DATASOURCE_PORT}/${REGISTRY_DATABASE}
+                jdbc:postgresql://${REGISTRY_DATASOURCE_HOST}:${REGISTRY_DATASOURCE_PORT}/registry
           resources:
             limits:
               cpu: 500m
@@ -76,24 +76,3 @@ spec:
             requests:
               cpu: 200m
               memory: 400Mi
-          livenessProbe:
-            httpGet:
-              path: /health/live
-              port: 8080
-              scheme: HTTP
-            initialDelaySeconds: 10
-            timeoutSeconds: 5
-            periodSeconds: 10
-            successThreshold: 1
-            failureThreshold: 3
-          readinessProbe:
-            httpGet:
-              path: /health/ready
-              port: 8080
-              scheme: HTTP
-            initialDelaySeconds: 10
-            timeoutSeconds: 5
-            periodSeconds: 10
-            successThreshold: 1
-            failureThreshold: 3
-
