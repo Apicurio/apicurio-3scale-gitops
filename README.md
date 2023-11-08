@@ -171,7 +171,7 @@ establish a connection with the database by following the steps below:
     GRANT ALL PRIVILEGES ON DATABASE apicurio TO apicurio;
     ```
 
-If your application encounters difficulties executing certain database instructions, you have the option to
+If your application encounters difficulties executing certain database instructions, you may need to
 designate the user as the owner of the database using the following command:
 
     ```

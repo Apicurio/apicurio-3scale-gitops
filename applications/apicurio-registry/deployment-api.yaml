@@ -45,7 +45,10 @@ spec:
             - name: CORS_ALLOWED_ORIGINS
               value: '*'
             - name: REGISTRY_DATABASE
-              value: registry
+              valueFrom:
+                secretKeyRef:
+                  name: rds-apicurio-registry-credentials
+                  key: database
             - name: REGISTRY_DATASOURCE_PORT
               valueFrom:
                 secretKeyRef:

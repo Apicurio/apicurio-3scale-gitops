@@ -37,7 +37,7 @@ spec:
               value: >-
                 https://apicurio-registry-ui-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/
             - name: REGISTRY_AUTH_CLIENT_ID
-              value: apicurio-registry
+              value: registry-ui
             - name: REGISTRY_AUTH_RBAC_ENABLED
               value: 'true'
             - name: REGISTRY_FEATURE_ROLE_MANAGEMENT
