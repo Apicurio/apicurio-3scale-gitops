@@ -31,7 +31,7 @@ spec:
               value: >-
                 https://keycloak-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/
             - name: KEYCLOAK_REALM
-              value: registry
+              value: apicurio
             - name: KEYCLOAK_API_CLIENT_ID
               value: registry-api
             - name: REGISTRY_LOG_LEVEL
@@ -45,10 +45,7 @@ spec:
             - name: CORS_ALLOWED_ORIGINS
               value: '*'
             - name: REGISTRY_DATABASE
-              valueFrom:
-                secretKeyRef:
-                  name: rds-apicurio-registry-credentials
-                  key: database
+              value: registry
             - name: REGISTRY_DATASOURCE_PORT
               valueFrom:
                 secretKeyRef:
