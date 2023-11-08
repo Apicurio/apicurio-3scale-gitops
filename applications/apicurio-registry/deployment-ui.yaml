@@ -27,15 +27,15 @@ spec:
           env:
             - name: REGISTRY_API_URL
               value: >-
-                https://apicurio-registry-api-rhaf-apicurio-registry.apps.dev-eng-ocp4-mas.dev.3sca.net/apis/registry/v2
+                https://apicurio-registry-api-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/apis/registry/v2
             - name: REGISTRY_AUTH_TYPE
               value: oidc
             - name: REGISTRY_AUTH_URL
               value: >-
-                https://keycloak-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/realms/registry
+                https://keycloak-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/realms/registry
             - name: REGISTRY_AUTH_REDIRECT_URL
               value: >-
-                https://apicurio-registry-ui-rhaf-apicurio-registry.apps.dev-eng-ocp4-mas.dev.3sca.net/
+                https://apicurio-registry-ui-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/
             - name: REGISTRY_AUTH_CLIENT_ID
               value: apicurio-registry
             - name: REGISTRY_AUTH_RBAC_ENABLED

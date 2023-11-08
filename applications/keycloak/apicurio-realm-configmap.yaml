@@ -4,14 +4,14 @@ apiVersion: v1
 metadata:
   name: apicurio-realm-configmap
   annotations:
-    description: registry realm settings.
+    description: Apicurio realm settings.
   labels:
     app: keycloak
 data:
   realm.json: |
     {
-      "id": "registry",
-      "realm": "registry",
+      "id": "apicurio",
+      "realm": "apicurio",
       "notBefore": 1600933598,
       "defaultSignatureAlgorithm": "RS256",
       "revokeRefreshToken": false,
@@ -61,7 +61,7 @@ data:
             "name": "sr-admin",
             "composite": false,
             "clientRole": false,
-            "containerId": "registry",
+            "containerId": "apicurio",
             "attributes": {}
           },
           {
@@ -70,7 +70,7 @@ data:
             "description": "${role_offline-access}",
             "composite": false,
             "clientRole": false,
-            "containerId": "registry",
+            "containerId": "apicurio",
             "attributes": {}
           },
           {
@@ -78,7 +78,7 @@ data:
             "name": "sr-developer",
             "composite": false,
             "clientRole": false,
-            "containerId": "registry",
+            "containerId": "apicurio",
             "attributes": {}
           },
           {
@@ -87,7 +87,7 @@ data:
             "description": "${role_uma_authorization}",
             "composite": false,
             "clientRole": false,
-            "containerId": "registry",
+            "containerId": "apicurio",
             "attributes": {}
           },
           {
@@ -95,12 +95,12 @@ data:
             "name": "sr-readonly",
             "composite": false,
             "clientRole": false,
-            "containerId": "registry",
+            "containerId": "apicurio",
             "attributes": {}
           },
           {
             "id": "33a21208-808d-444f-9aa7-fdf3dc9536ce",
-            "name": "default-roles-registry",
+            "name": "default-roles-apicurio",
             "description": "${role_default-roles}",
             "composite": true,
             "composites": {
@@ -118,7 +118,7 @@ data:
               }
             },
             "clientRole": false,
-            "containerId": "registry",
+            "containerId": "apicurio",
             "attributes": {}
           },
           {
@@ -126,7 +126,7 @@ data:
             "name": "User",
             "composite": false,
             "clientRole": false,
-            "containerId": "registry",
+            "containerId": "apicurio",
             "attributes": {}
           }
         ],
@@ -447,11 +447,11 @@ data:
       "groups": [],
       "defaultRole": {
         "id": "33a21208-808d-444f-9aa7-fdf3dc9536ce",
-        "name": "default-roles-registry",
+        "name": "default-roles-apicurio",
         "description": "${role_default-roles}",
         "composite": true,
         "clientRole": false,
-        "containerId": "registry"
+        "containerId": "apicurio"
       },
       "requiredCredentials": [
         "password"
@@ -503,7 +503,7 @@ data:
           "requiredActions": [],
           "realmRoles": [
             "sr-admin",
-            "default-roles-registry"
+            "default-roles-apicurio"
           ],
           "notBefore": 0,
           "groups": []
@@ -637,14 +637,14 @@ data:
           "clientId": "account",
           "name": "${client_account}",
           "rootUrl": "${authBaseUrl}",
-          "baseUrl": "/realms/registry/account/",
+          "baseUrl": "/realms/apicurio/account/",
           "surrogateAuthRequired": false,
           "enabled": true,
           "alwaysDisplayInConsole": false,
           "clientAuthenticatorType": "client-secret",
           "secret": "test1",
           "redirectUris": [
-            "/realms/registry/account/*"
+            "/realms/apicurio/account/*"
           ],
           "webOrigins": [],
           "notBefore": 0,
@@ -679,14 +679,14 @@ data:
           "clientId": "account-console",
           "name": "${client_account-console}",
           "rootUrl": "${authBaseUrl}",
-          "baseUrl": "/realms/registry/account/",
+          "baseUrl": "/realms/apicurio/account/",
           "surrogateAuthRequired": false,
           "enabled": true,
           "alwaysDisplayInConsole": false,
           "clientAuthenticatorType": "client-secret",
           "secret": "test1",
           "redirectUris": [
-            "/realms/registry/account/*"
+            "/realms/apicurio/account/*"
           ],
           "webOrigins": [],
           "notBefore": 0,
@@ -1470,14 +1470,14 @@ data:
           "clientId": "security-admin-console",
           "name": "${client_security-admin-console}",
           "rootUrl": "${authAdminUrl}",
-          "baseUrl": "/admin/registry/console/",
+          "baseUrl": "/admin/apicurio/console/",
           "surrogateAuthRequired": false,
           "enabled": true,
           "alwaysDisplayInConsole": false,
           "clientAuthenticatorType": "client-secret",
           "secret": "test1",
           "redirectUris": [
-            "/admin/registry/console/*"
+            "/admin/apicurio/console/*"
           ],
           "webOrigins": [
             "+"

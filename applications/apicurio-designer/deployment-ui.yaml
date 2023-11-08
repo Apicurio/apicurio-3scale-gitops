@@ -27,7 +27,7 @@ spec:
           env:
             - name: DESIGNER_API_URL
               value: >-
-                https://apicurio-designer-api-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/apis/designer/v0
+                https://apicurio-designer-api-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/apis/designer/v0
           resources:
             limits:
               cpu: 200m
