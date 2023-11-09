@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - image: >-
-            quay.io/apicurio/apicurio-api-designer-ui@sha256:131ee19174095da4cff1213527d1692b8024863607dcc8407569db8c5c6bd857
+            quay.io/apicurio/apicurio-api-designer-ui@sha256:6f0eee8237af774ef0f5680c5c207e0fa1c12c209ec6454c63703ba7cae34913
           name: apicurio-designer-ui
           ports:
             - name: web
@@ -28,15 +28,16 @@ spec:
             - name: DESIGNER_API_URL
               value: >-
                 https://apicurio-designer-api-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/apis/designer/v0
-
             - name: DESIGNER_AUTH_TYPE
               value: oidc
             - name: DESIGNER_AUTH_URL
-              value: https://keycloak-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/realms/apicurio
+              value: >-
+                https://keycloak-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/realms/apicurio
             - name: DESIGNER_AUTH_CLIENT_ID
               value: designer-ui
             - name: DESIGNER_AUTH_REDIRECT_URL
-              value: https://apicurio-designer-ui-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/
+              value: >-
+                https://apicurio-designer-ui-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/
           resources:
             limits:
               cpu: 200m
