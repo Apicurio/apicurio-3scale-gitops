@@ -34,6 +34,10 @@ jobs:
           cd repo/tests/registry
           npm install
           npx playwright install --with-deps
+
+          export REGISTRY_URL=${{ secrets.REGISTRY_URL }}
+          export TEST_USERNAME=${{ secrets.TEST_USERNAME }}
+          export TEST_PASSWORD=${{ secrets.TEST_PASSWORD }}
           npm run test
 
       - name: Upload Test Report
