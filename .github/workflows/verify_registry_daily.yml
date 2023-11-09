@@ -1,4 +1,4 @@
-name: Deploy Latest Registry Docker Images (3scale-dev)
+name: Verify Registry Deployment (3scale-dev)
 
 on:
   workflow_dispatch:
