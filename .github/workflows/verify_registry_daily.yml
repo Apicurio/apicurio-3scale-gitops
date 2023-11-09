@@ -1,0 +1,53 @@
+name: Deploy Latest Registry Docker Images (3scale-dev)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+
+  verify-registry:
+    name: Verify 3scale Registry Deployment
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'apicurio'
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Code Checkout
+        run: |
+          mkdir repo
+          cd repo
+          git init
+          git config --global user.name "apicurio-ci"
+          git config --global user.email "apicurio.ci@gmail.com"
+          git remote add origin "https://apicurio-ci:${{ secrets.ACCESS_TOKEN }}@github.com/Apicurio/apicurio-3scale-gitops.git"
+          git fetch
+          git checkout main
+          git branch --set-upstream-to=origin/main
+          git pull
+
+      - name: Run e2e tests
+        run: |
+          cd repo/tests/registry
+          npm install
+          npx playwright install --with-deps
+          npm run test
+
+      - name: Upload Test Report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: repo/tests/registry/playwright-report/
+          retention-days: 7
+
+      - name: Google Chat Notification
+        if: failure()
+        uses: Co-qn/google-chat-notification@b9227d9daa4638c9782a5bd16c4abb86268127a1
+        with:
+          name: ${{ github.job }}
+          url: ${{ secrets.GOOGLE_CHAT_WEBHOOK }}
+          status: ${{ job.status }}
