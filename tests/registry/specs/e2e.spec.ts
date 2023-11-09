@@ -8,7 +8,7 @@ const USERNAME: string = process.env["TEST_USERNAME"] || "user";
 const PASSWORD: string = process.env["TEST_PASSWORD"] || "password";
 
 
-test("End to End - Login", async ({ page }) => {
+test("End to End Test (Registry)", async ({ page }) => {
     await page.goto(REGISTRY_URL);
 
     await expect(page).toHaveTitle(/Sign in to apicurio/, { timeout: 10000 });
@@ -19,11 +19,6 @@ test("End to End - Login", async ({ page }) => {
     await page.locator("#kc-login").click();
 
     // Should then redirect to Registry
-    await expect(page).toHaveTitle(/Apicurio Registry/);
-});
-
-test("End to End - Upload artifact", async ({ page }) => {
-    await page.goto(REGISTRY_URL);
     await expect(page).toHaveTitle(/Apicurio Registry/);
 
     expect(page.getByTestId("btn-toolbar-upload-artifact")).toBeDefined();
@@ -46,14 +41,8 @@ test("End to End - Upload artifact", async ({ page }) => {
     // Assert the meta-data is as expected
     await expect(page.getByTestId("artifact-details-id")).toHaveText("TestArtifact");
     await expect(page.getByTestId("artifact-details-state")).toHaveText("ENABLED");
-});
 
-
-test("End to End - Edit metadata", async ({ page }) => {
-    // Navigate to the artifact details page
-    await page.goto(`${REGISTRY_URL}/artifacts/e2e.tester/TestArtifact/versions/latest`);
-
-    // Click the "Edit" button to show the modal
+    // Click the "Edit" button to show the Edit Metadata modal
     await page.getByTestId("artifact-btn-edit").click();
     await expect(page.getByTestId("edit-metadata-modal-name")).toHaveValue("Empty API Spec");
 
@@ -69,11 +58,8 @@ test("End to End - Edit metadata", async ({ page }) => {
     await expect(page.getByTestId("artifact-details-description")).toHaveText("A simple empty API.");
     await expect(page.getByTestId("artifact-details-id")).toHaveText("TestArtifact");
     await expect(page.getByTestId("artifact-details-state")).toHaveText("ENABLED");
-});
 
-
-test("End to End - Delete artifact", async ({ page }) => {
-    await page.goto(`${REGISTRY_URL}/artifacts/e2e.tester/TestArtifact/versions/latest`);
+    // Delete the artifact
     await page.getByTestId("header-btn-delete").click();
     await page.getByTestId("modal-btn-delete").click();
 
