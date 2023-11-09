@@ -18,6 +18,7 @@
   - [Vault Access](#vault-access)
   - [Adding Secrets](#adding-secrets)
   - [Creating External Secrets](#creating-external-secrets)
+- [Automatic Deployments](#automatic-deployments)
 
 
 
@@ -256,5 +257,29 @@ spec:
         property: password
 ```
 
+# Automatic Deployments
 
+The Registry and Designer applications are each configured to automatically deploy the latest snapshot
+version whenever that version is built.  This is accomplished through GitHub workflows configured in
+the following locations:
+
+* [apicurio-registry/.github/workflows/verify.yaml](https://github.com/Apicurio/apicurio-registry/blob/main/.github/workflows/verify.yaml)
+* [apicurio-api-designer/.github/workflows/verify.yaml](https://github.com/Apicurio/apicurio-api-designer/blob/main/.github/workflows/verify.yaml)
+* [apicurio-3scale-gitops/.github/workflows/deploy_latest_registry.yml](https://github.com/Apicurio/apicurio-3scale-gitops/blob/main/.github/workflows/deploy_latest_registry.yml)
+* [apicurio-3scale-gitops/.github/workflows/deploy_latest_designer.yml](https://github.com/Apicurio/apicurio-3scale-gitops/blob/main/.github/workflows/deploy_latest_designer.yml)
+
+Whenever a change is made to `main` for either apicurio-registry or apicurio-api-designer, the
+standard Verify workflow is run.  That workflow builds and tests the software, and then it
+builds and pushes docker containers tagged with `latest-snapshot`.  Each of those workflows
+has a job called `trigger-3scale-deploy` which will trigger the appropriate `deploy_latest_*.yaml`
+workflow from the 3scale gitops repo.
+
+When triggered, the `deploy_latest_*.yaml` perform the following steps:
+
+1. `docker pull` on the appropriate images tagged by `latest-snapshot`
+2. `docker inspect` on the images to determine their SHA/digest
+3. Update the appropriate deployment yaml config with the new SHA/digest for the image
+4. Push changes to the repo
+
+This will then cause ArgoCD to redeploy the application with the new docker image.
 
