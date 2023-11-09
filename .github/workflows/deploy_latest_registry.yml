@@ -77,9 +77,9 @@ jobs:
           echo "---"
           find . -name 'deployment*.yaml'
           echo "---"
-          cat repo/applications/apicurio-registry/deployment-api.yaml
+          cat applications/apicurio-registry/deployment-api.yaml
           echo "---"
-          cat repo/applications/apicurio-registry/deployment-ui.yaml
+          cat applications/apicurio-registry/deployment-ui.yaml
           echo "---"
 
       - name: Commit Changes
