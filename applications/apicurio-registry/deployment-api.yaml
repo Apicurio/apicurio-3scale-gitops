@@ -71,7 +71,7 @@ spec:
                   key: password
             - name: REGISTRY_DATASOURCE_URL
               value: >-
-                jdbc:postgresql://${REGISTRY_DATASOURCE_HOST}:${REGISTRY_DATASOURCE_PORT}/registry
+                jdbc:postgresql://${REGISTRY_DATASOURCE_HOST}:${REGISTRY_DATASOURCE_PORT}/${REGISTRY_DATABASE}
           resources:
             limits:
               cpu: 500m

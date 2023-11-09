@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - image: >-
-            quay.io/apicurio/apicurio-api-designer-mem@sha256:a3a58b5428185d4b114e98dd669d2aa5b83d3687917f7be526c432de81ca1be0
+            quay.io/apicurio/apicurio-api-designer-sql@sha256:84f5208981ff7170ccfadaf3d58800b423373b52ddf11f6322f437abb0dcc6b8
           name: apicurio-designer-api
           ports:
             - name: web
@@ -42,6 +42,36 @@ spec:
               value: https://keycloak-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/realms/apicurio
             - name: OIDC_API_CLIENT_ID
               value: designer-api
+
+            - name: DESIGNER_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: rds-apicurio-designer-credentials
+                  key: database
+            - name: DESIGNER_DATASOURCE_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: rds-apicurio-designer-credentials
+                  key: port
+            - name: DESIGNER_DATASOURCE_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: rds-apicurio-designer-credentials
+                  key: host
+
+            - name: DESIGNER_STORAGE_DATASOURCE_URL
+              value: >-
+                jdbc:postgresql://${DESIGNER_DATASOURCE_HOST}:${DESIGNER_DATASOURCE_PORT}/${DESIGNER_DATABASE}
+            - name: DESIGNER_STORAGE_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: rds-apicurio-designer-credentials
+                  key: user
+            - name: DESIGNER_STORAGE_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: rds-apicurio-designer-credentials
+                  key: password
           resources:
             limits:
               cpu: 400m
