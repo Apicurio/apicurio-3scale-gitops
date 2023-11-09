@@ -75,6 +75,8 @@ jobs:
         run: |
           cd repo
           echo "---"
+          find . -name 'deployment*.yaml'
+          echo "---"
           cat repo/applications/apicurio-registry/deployment-api.yaml
           echo "---"
           cat repo/applications/apicurio-registry/deployment-ui.yaml
