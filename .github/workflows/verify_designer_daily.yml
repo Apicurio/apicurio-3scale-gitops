@@ -1,4 +1,4 @@
-name: Verify Registry Deployment (3scale-dev)
+name: Verify Designer Deployment (3scale-dev)
 
 on:
   workflow_dispatch:
@@ -7,8 +7,8 @@ on:
 
 jobs:
 
-  verify-registry:
-    name: Verify 3scale Registry Deployment
+  verify-designer:
+    name: Verify 3scale Designer Deployment
     runs-on: ubuntu-latest
     if: github.repository_owner == 'apicurio'
     steps:
@@ -31,7 +31,7 @@ jobs:
 
       - name: Run e2e tests
         run: |
-          cd repo/tests/registry
+          cd repo/tests/designer
           npm install
           npx playwright install --with-deps
 
@@ -45,7 +45,7 @@ jobs:
         if: always()
         with:
           name: playwright-report
-          path: repo/tests/registry/playwright-report/
+          path: repo/tests/designer/playwright-report/
           retention-days: 3
 
       - name: Google Chat Notification
