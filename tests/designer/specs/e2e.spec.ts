@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-const REGISTRY_URL: string = process.env["REGISTRY_URL"] || "http://localhost:8888";
+const REGISTRY_URL: string = process.env["DESIGNER_URL"] || "http://localhost:8888";
 const USERNAME: string = process.env["TEST_USERNAME"] || "user";
 const PASSWORD: string = process.env["TEST_PASSWORD"] || "password";
 
