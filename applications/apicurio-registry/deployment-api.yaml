@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - image: >-
-            quay.io/apicurio/apicurio-registry-sql@sha256:182b2618e1de9a94246abc436f7047d055ef344f9925098b899968275cf0c73c
+            quay.io/apicurio/apicurio-registry@sha256:90c9a9533b05e5bf658aa79aba536d58588daf534f1462bfc972e1db1bc9ce2a
           name: apicurio-registry-api
           ports:
             - name: web
@@ -44,7 +44,6 @@ spec:
               value: 'true'
             - name: CORS_ALLOWED_ORIGINS
               value: '*'
-            
             - name: REGISTRY_STORAGE_KIND
               value: sql
             - name: REGISTRY_STORAGE_DB_KIND
