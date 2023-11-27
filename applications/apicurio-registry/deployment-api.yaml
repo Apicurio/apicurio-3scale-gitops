@@ -44,6 +44,11 @@ spec:
               value: 'true'
             - name: CORS_ALLOWED_ORIGINS
               value: '*'
+            
+            - name: REGISTRY_STORAGE_KIND
+              value: sql
+            - name: REGISTRY_STORAGE_DB_KIND
+              value: postgresql
             - name: REGISTRY_DATABASE
               valueFrom:
                 secretKeyRef:
