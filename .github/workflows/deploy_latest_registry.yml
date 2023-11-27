@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.repository_owner == 'apicurio'
     env:
-      API_IMAGE: quay.io/apicurio/apicurio-registry-sql
+      API_IMAGE: quay.io/apicurio/apicurio-registry
       UI_IMAGE: quay.io/apicurio/apicurio-registry-ui
       IMAGE_TAG: latest-snapshot
     steps:
