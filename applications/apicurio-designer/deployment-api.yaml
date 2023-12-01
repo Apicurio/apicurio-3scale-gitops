@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - image: >-
-            quay.io/apicurio/apicurio-api-designer-sql@sha256:dd6ef3bcec3dcdbbbb48b0a434ce3f8089fcd4e6b5cf099bb8c22313f5fdd584
+            quay.io/apicurio/apicurio-api-designer-sql@sha256:75cc16224b0d0004777b0d190966e87e3796b74f3cc933cac8c4dc048db391db
           name: apicurio-designer-api
           ports:
             - name: web
