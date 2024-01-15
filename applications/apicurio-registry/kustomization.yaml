@@ -9,3 +9,5 @@ resources:
   - service-ui.yaml
   - route-ui.yaml
   - psql-client.yaml
+  - probe-application/probe-application-deployment.yaml
+  - probe-application/probe-application-external-secrets.yaml

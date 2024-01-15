@@ -48,6 +48,8 @@ spec:
               value: sql
             - name: REGISTRY_STORAGE_DB_KIND
               value: postgresql
+            - name: CLIENT_CREDENTIALS_BASIC_AUTH_ENABLED
+              value: "true"
             - name: REGISTRY_DATABASE
               valueFrom:
                 secretKeyRef:
