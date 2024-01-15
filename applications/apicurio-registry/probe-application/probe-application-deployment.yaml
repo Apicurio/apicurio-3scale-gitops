@@ -1,0 +1,95 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: probe-application
+    template: probe-application-registry
+  name: probe-application
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: probe-application
+      template: probe-application-registry
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: probe-application
+        template: probe-application-registry
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app
+                      operator: In
+                      values:
+                        - probe-application
+                    - key: template
+                      operator: In
+                      values:
+                        - probe-application-registry
+                topologyKey: failure-domain.beta.kubernetes.io/zone
+              weight: 100
+      containers:
+        - env:
+            - name: QUARKUS_HTTP_PORT
+              value: "8080"
+            - name: CONCURRENT_TASKS
+              value: "3"
+            - name: REGISTRY_URL
+              value: https://apicurio-registry-api-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net
+            - name: AUTH_TOKEN_ENDPOINT
+              value: https://keycloak-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/realms/apicurio/protocol/openid-connect/token
+            - name: AUTH_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  key: client-id
+                  name: probe-application-credentials
+            - name: AUTH_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  key: client-secret
+                  name: probe-application-credentials
+          image: quay.io/apicurio/apicurio-registry-probe:latest
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /q/health/live
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+          name: probe-application
+          ports:
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+          readinessProbe:
+            failureThreshold: 5
+            httpGet:
+              path: /q/health/ready
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+          resources:
+            limits:
+              cpu: 500m
+              memory: 1000Mi
+            requests:
+              cpu: 200m
+              memory: 400Mi
+          terminationMessagePath: /dev/termination-log
