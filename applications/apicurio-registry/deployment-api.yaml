@@ -37,7 +37,7 @@ spec:
             - name: REGISTRY_LOG_LEVEL
               value: DEBUG
             - name: LOG_LEVEL
-              value: DEBUG
+              value: INFO
             - name: QUARKUS_PROFILE
               value: prod
             - name: REGISTRY_CONFIG_CACHE_ENABLED
@@ -50,6 +50,8 @@ spec:
               value: postgresql
             - name: CLIENT_CREDENTIALS_BASIC_AUTH_ENABLED
               value: "true"
+            - name: CLIENT_CREDENTIALS_BASIC_CACHE_EXPIRATION
+              value: "4"
             - name: REGISTRY_DATABASE
               valueFrom:
                 secretKeyRef:
