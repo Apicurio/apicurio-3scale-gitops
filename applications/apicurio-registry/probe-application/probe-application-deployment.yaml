@@ -58,7 +58,7 @@ spec:
                 secretKeyRef:
                   key: client-secret
                   name: probe-application-credentials
-          image: quay.io/apicurio/apicurio-registry-probe@sha256:81becdf5fbb7e43e7ed5f57d26a8d63eca2114b5f8427927697840ffa94f96c5
+          image: quay.io/apicurio/apicurio-registry-probe@sha256:c2aa43b2a44cb8a390bed0f7487e69b9f5a37dcbbf6fc73ae10c8276b3f2ac1e
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 3
