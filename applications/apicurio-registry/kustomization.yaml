@@ -11,5 +11,3 @@ resources:
   - psql-client.yaml
   - probe-application/probe-application-deployment.yaml
   - probe-application/probe-application-external-secrets.yaml
-  - probe-application/probe-application-route.yaml
-  - client-application/cdc/kafka/strimzi.yaml
