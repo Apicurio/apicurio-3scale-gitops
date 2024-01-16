@@ -25,7 +25,7 @@ spec:
   build:
     output:
       type: docker
-      image: image-registry.openshift-image-registry.svc:5000/connect-cluster-namespace/debezium-connect:latest
+      image: image-registry.openshift-image-registry.svc:5000/rhaf-apicurio/debezium-connect:latest
     plugins:
       - name: debezium-connector-postgres
         artifacts:
