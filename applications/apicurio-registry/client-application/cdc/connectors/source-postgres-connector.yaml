@@ -13,6 +13,7 @@ spec:
     database.user: ${secrets:rhaf-apicurio/rds-apicurio-registry-client-application-credentials:user}
     database.password: ${secrets:rhaf-apicurio/rds-apicurio-registry-client-application-credentials:password}
     database.dbname: ${secrets:rhaf-apicurio/rds-apicurio-registry-client-application-credentials:database}
+    plugin.name: "pgoutput"
     topic.prefix: "server1"
     schema.include.list: "inventory"
     key.converter: "io.apicurio.registry.utils.converter.AvroConverter"
