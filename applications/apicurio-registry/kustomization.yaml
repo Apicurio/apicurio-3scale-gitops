@@ -18,3 +18,4 @@ resources:
   - client-application/cdc/connectors/rds-external-secrets.yaml
   - client-application/cdc/connectors/source-postgres-connector.yaml
   - client-application/cdc/elasticsearch/operator.yaml
+  - client-application/cdc/elasticsearch/es.yaml
