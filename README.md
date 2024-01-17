@@ -159,7 +159,7 @@ establish a connection with the database by following the steps below:
 1. **Login to the openshift cluster.**
 2. **Exec into the pg-client pod running in the cluster.**
     ```
-    oc exec -it pg-client -n apicurio -- /bin/bash
+    oc exec -it pg-client -n rhaf-apicurio -- /bin/bash
     ```
 3. **Connect to the RDS**
     ```
