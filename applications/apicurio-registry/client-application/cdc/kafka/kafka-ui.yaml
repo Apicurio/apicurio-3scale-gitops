@@ -24,7 +24,7 @@ spec:
             - name: KAFKA_CLUSTERS_0_NAME
               value: "Probe Application"
             - name: KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS
-              value: kafka-cluster-kafka-bootstrap:9093
+              value: kafka-cluster-kafka-bootstrap:9092
             - name: KAFKA_CLUSTERS_0_SCHEMAREGISTRY
               value: https://apicurio-registry-api-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/apis/ccompat/v7
             - name: KAFKA_CLUSTERS_0_SCHEMAREGISTRYAUTH_USERNAME
