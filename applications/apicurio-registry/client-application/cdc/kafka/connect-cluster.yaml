@@ -14,6 +14,8 @@ spec:
       - secretName: kafka-cluster-cluster-ca-cert
         certificate: ca.crt
   config:
+    config.providers: secrets
+    config.providers.secrets.class: io.strimzi.kafka.KubernetesSecretConfigProvider
     group.id: connect-cluster
     offset.storage.topic: connect-cluster-offsets
     config.storage.topic: connect-cluster-configs
