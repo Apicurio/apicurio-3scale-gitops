@@ -46,3 +46,26 @@ spec:
           - type: tgz
             url: https://repo1.maven.org/maven2/io/apicurio/apicurio-registry-distro-connect-converter/2.3.1.Final/apicurio-registry-distro-connect-converter-2.3.1.Final.tar.gz
             sha512sum: eee79c68bae272bef6f720fa5af6b583ed16cc2c5aa2da96e464b99ade677abd290561b97d3d9279ed158da216a78d15aa4f9495614517915b6eac29b13cfb56
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: connector-configuration-role
+rules:
+  - apiGroups: [""]
+    resources: ["secrets"]
+    resourceNames: ["rds-apicurio-registry-client-application-credentials"]
+    verbs: ["get"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: connector-configuration-role-binding
+subjects:
+  - kind: ServiceAccount
+    name: kafka-connect-cluster-connect
+    namespace: rhaf-apicurio
+roleRef:
+  kind: Role
+  name: connector-configuration-role
+  apiGroup: rbac.authorization.k8s.io
