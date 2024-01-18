@@ -81,7 +81,7 @@ spec:
             - name: QUARKUS_DATASOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: rds-apicurio-registry-credentials
+                  name: probe-application-credentials
                   key: password
             - name: QUARKUS_DATASOURCE_JDBC_URL
               value: >-
@@ -102,8 +102,10 @@ spec:
               value: ${AUTH_TOKEN_ENDPOINT}
             - name: MP_MESSAGING_INCOMING_CUSTOMERS_VALUE_DESERIALIZER
               value: "io.apicurio.registry.serde.avro.AvroKafkaDeserializer"
+            - name: QUARKUS_HIBERNATE_ORM_DATABASE_DEFAULT_SCHEMA
+              value: "inventory"
 
-          image: quay.io/apicurio/apicurio-registry-probe@sha256:a1808c18868f1e90caf818e71d4f487d42196691f7b8f33d3b7908a462fbc97c
+          image: quay.io/apicurio/apicurio-registry-probe@sha256:7cc4d32c77035979bc11530ec4c52cd876001af82bf2d447851b8d6861b50dda
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 3
