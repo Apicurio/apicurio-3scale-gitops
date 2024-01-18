@@ -100,8 +100,10 @@ spec:
               value: ${AUTH_CLIENT_SECRET}
             - name: KAFKA_APICURIO_AUTH_SERVICE_TOKEN_ENDPOINT
               value: ${AUTH_TOKEN_ENDPOINT}
+            - name: MP_MESSAGING_INCOMING_CUSTOMERS_VALUE_DESERIALIZER
+              value: "io.apicurio.registry.serde.avro.AvroKafkaDeserializer"
 
-          image: quay.io/apicurio/apicurio-registry-probe@sha256:3447d344ff91756bd766a4f2a8a4978267ec1dd5deb37598c320fc9bce20c803
+          image: quay.io/apicurio/apicurio-registry-probe@sha256:a1808c18868f1e90caf818e71d4f487d42196691f7b8f33d3b7908a462fbc97c
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 3
