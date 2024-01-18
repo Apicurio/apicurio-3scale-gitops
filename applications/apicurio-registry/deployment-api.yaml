@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - image: >-
-            quay.io/apicurio/apicurio-registry@sha256:bb440aaa335a10f1fa3ae560b8d26272d161e37b2149ea568cc5cca3b66a4162
+            quay.io/apicurio/apicurio-registry@sha256:28aed1862a961f05bd47d0ccc763fe990c3b30981549e9a6688c7c3e298cf6e2
           name: apicurio-registry-api
           ports:
             - name: web
@@ -49,9 +49,9 @@ spec:
             - name: REGISTRY_STORAGE_DB_KIND
               value: postgresql
             - name: CLIENT_CREDENTIALS_BASIC_AUTH_ENABLED
-              value: "true"
+              value: 'true'
             - name: CLIENT_CREDENTIALS_BASIC_CACHE_EXPIRATION
-              value: "4"
+              value: '4'
             - name: REGISTRY_DATABASE
               valueFrom:
                 secretKeyRef:
@@ -81,7 +81,7 @@ spec:
               value: >-
                 jdbc:postgresql://${REGISTRY_DATASOURCE_HOST}:${REGISTRY_DATASOURCE_PORT}/${REGISTRY_DATABASE}
             - name: REGISTRY_APIS_V2_DATE_FORMAT
-              value: "yyyy-MM-dd'T'HH:mm:ssZ"
+              value: 'yyyy-MM-dd''T''HH:mm:ssZ'
           resources:
             limits:
               cpu: 500m
