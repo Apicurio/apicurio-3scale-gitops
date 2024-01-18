@@ -6,7 +6,7 @@ metadata:
     template: probe-application-registry
   name: probe-application
 spec:
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels:
       app: probe-application
@@ -88,10 +88,6 @@ spec:
                 jdbc:postgresql://${INVENTORY_DATASOURCE_HOST}:${INVENTORY_DATASOURCE_PORT}/${INVENTORY_DATABASE}
             - name: KAFKA_BOOTSTRAP_SERVERS
               value: "kafka-cluster-kafka-bootstrap:9092"
-            - name: MP_MESSAGING_INCOMING_CUSTOMERS_FROM_KAFKA_TOPIC
-              value: "server1.inventory.customers"
-            - name: MP_MESSAGING_INCOMING_CUSTOMERS_CONNECTOR
-              value: "smallrye-kafka"
             - name: KAFKA_APICURIO_REGISTRY_URL
               value: ${REGISTRY_URL}
             - name: KAFKA_APICURIO_AUTH_CLIENT_ID
@@ -100,12 +96,10 @@ spec:
               value: ${AUTH_CLIENT_SECRET}
             - name: KAFKA_APICURIO_AUTH_SERVICE_TOKEN_ENDPOINT
               value: ${AUTH_TOKEN_ENDPOINT}
-            - name: MP_MESSAGING_INCOMING_CUSTOMERS_VALUE_DESERIALIZER
-              value: "io.apicurio.registry.serde.avro.AvroKafkaDeserializer"
             - name: QUARKUS_HIBERNATE_ORM_DATABASE_DEFAULT_SCHEMA
               value: "inventory"
 
-          image: quay.io/apicurio/apicurio-registry-probe@sha256:74a773d43f0c621a7f212e5886c85ed4a49fc1b0136c7f864ea99ec13695d428
+          image: quay.io/apicurio/apicurio-registry-probe@sha256:79143c0c51aeedd8f5f72f177b2c2511eabc1ebfcfc954f5b07833111c3eb4a6
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 3
