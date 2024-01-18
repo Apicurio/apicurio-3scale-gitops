@@ -43,7 +43,7 @@ spec:
             - name: QUARKUS_HTTP_PORT
               value: "8080"
             - name: CONCURRENT_TASKS
-              value: "3"
+              value: "1"
             - name: REGISTRY_URL
               value: https://apicurio-registry-api-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net
             - name: AUTH_TOKEN_ENDPOINT
@@ -105,7 +105,7 @@ spec:
             - name: QUARKUS_HIBERNATE_ORM_DATABASE_DEFAULT_SCHEMA
               value: "inventory"
 
-          image: quay.io/apicurio/apicurio-registry-probe@sha256:86c4e618e873187b586e45cb086ea79295211641d1c6e98b62e1bbf389ee5c83
+          image: quay.io/apicurio/apicurio-registry-probe@sha256:74a773d43f0c621a7f212e5886c85ed4a49fc1b0136c7f864ea99ec13695d428
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 3
