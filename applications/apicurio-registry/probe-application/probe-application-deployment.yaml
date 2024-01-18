@@ -99,7 +99,7 @@ spec:
             - name: QUARKUS_HIBERNATE_ORM_DATABASE_DEFAULT_SCHEMA
               value: "inventory"
 
-          image: quay.io/apicurio/apicurio-registry-probe@sha256:c8bf35866bf8f6782b390d3c20ae8e2745f5f0977b7bd59f199bf99f27c6beda
+          image: quay.io/apicurio/apicurio-registry-probe@sha256:a2959c978ce12da5cd1ea574a0c28edd3366e435c161a1c43e8633f6c7e35f78
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 3
