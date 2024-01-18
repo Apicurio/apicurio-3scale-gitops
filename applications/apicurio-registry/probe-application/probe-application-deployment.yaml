@@ -58,7 +58,41 @@ spec:
                 secretKeyRef:
                   key: client-secret
                   name: probe-application-credentials
-          image: quay.io/apicurio/apicurio-registry-probe@sha256:0a8e446d043ac0a9f857374c077d6fb604ac01d6376763f1997b36bc545fefa2
+            - name: INVENTORY_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: probe-application-credentials
+                  key: database
+            - name: INVENTORY_DATASOURCE_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: probe-application-credentials
+                  key: port
+            - name: INVENTORY_DATASOURCE_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: probe-application-credentials
+                  key: host
+            - name: QUARKUS_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: probe-application-credentials
+                  key: user
+            - name: probe-application-credentials
+              valueFrom:
+                secretKeyRef:
+                  name: rds-apicurio-registry-credentials
+                  key: password
+            - name: INVENTORY_DATASOURCE_URL
+              value: >-
+                jdbc:postgresql://${INVENTORY_DATASOURCE_HOST}:${INVENTORY_DATASOURCE_PORT}/${INVENTORY_DATABASE}
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              value: "kafka-cluster-kafka-bootstrap:9092"
+            - name: MP_MESSAGING_INCOMING_CUSTOMERS_FROM_KAFKA_TOPIC
+              value: "customers"
+            - name: MP_MESSAGING_INCOMING_CUSTOMERS_FROM_KAFKA_CONNECTOR
+              value: "smallrye-kafka"
+          image: quay.io/apicurio/apicurio-registry-probe@sha256:ae5d84ebca26fd1f21048010ac5c32fe23fe5c6c01edceae49d07f6de957985d
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 3
