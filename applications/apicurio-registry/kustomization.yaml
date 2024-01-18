@@ -12,7 +12,6 @@ resources:
   - probe-application/probe-application-deployment.yaml
   - probe-application/probe-application-external-secrets.yaml
   - client-application/cdc/kafka/strimzi.yaml
-  - client-application/cdc/kafka/kafka-cluster.yaml
   - client-application/cdc/kafka/kafka-ui.yaml
   - client-application/cdc/kafka/connect-cluster.yaml
   - client-application/cdc/connectors/rds-external-secrets.yaml
