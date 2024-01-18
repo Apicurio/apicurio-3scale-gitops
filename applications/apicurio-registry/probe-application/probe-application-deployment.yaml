@@ -6,7 +6,7 @@ metadata:
     template: probe-application-registry
   name: probe-application
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       app: probe-application
