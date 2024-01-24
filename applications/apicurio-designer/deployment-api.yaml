@@ -44,7 +44,8 @@ spec:
             - name: OIDC_API_CLIENT_ID
               value: designer-api
             - name: DESIGNER_STORAGE_DB_KIND
-            - name: "postgresql"
+              value: "postgresql"
+            - name: DESIGNER_DATASOURCE_DATABASE
               valueFrom:
                 secretKeyRef:
                   name: rds-apicurio-designer-credentials
