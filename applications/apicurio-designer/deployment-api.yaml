@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - image: >-
-            quay.io/apicurio/apicurio-api-designer@sha256:4ff5d8b9b5482d45703362496aa49cdc0bb870b97a31a663b80ddbfe3eaec2b7
+            quay.io/apicurio/apicurio-api-designer@sha256:2a2dda2829bb3fed6aebcb3302572dbd2a66f2073fe2cb61103b30d36ffd5f38
           name: apicurio-designer-api
           ports:
             - name: web
@@ -44,7 +44,7 @@ spec:
             - name: OIDC_API_CLIENT_ID
               value: designer-api
             - name: APICURIO_STORAGE_DB_KIND
-            - name: "postgresql"
+            - name: postgresql
               valueFrom:
                 secretKeyRef:
                   name: rds-apicurio-designer-credentials
