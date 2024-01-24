@@ -45,9 +45,9 @@ spec:
             - name: CONCURRENT_TASKS
               value: "1"
             - name: REGISTRY_URL
-              value: https://apicurio-registry-api-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net
+              value: https://registry-api.dev.apicur.io
             - name: AUTH_TOKEN_ENDPOINT
-              value: https://keycloak-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/realms/apicurio/protocol/openid-connect/token
+              value: https://sso.dev.apicur.io/realms/apicurio/protocol/openid-connect/token
             - name: AUTH_CLIENT_ID
               valueFrom:
                 secretKeyRef:

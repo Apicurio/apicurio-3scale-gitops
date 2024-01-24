@@ -26,7 +26,7 @@ spec:
             - name: KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS
               value: kafka-cluster-kafka-bootstrap:9092
             - name: KAFKA_CLUSTERS_0_SCHEMAREGISTRY
-              value: https://apicurio-registry-api-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/apis/ccompat/v7
+              value: https://registry-api.dev.apicur.io/apis/ccompat/v7
             - name: KAFKA_CLUSTERS_0_SCHEMAREGISTRYAUTH_USERNAME
               valueFrom:
                 secretKeyRef:
@@ -67,6 +67,7 @@ apiVersion: route.openshift.io/v1
 metadata:
   name: kafka-ui
 spec:
+  host: kafka-ui.dev.apicur.io
   to:
     kind: Service
     name: kafka-ui-service
