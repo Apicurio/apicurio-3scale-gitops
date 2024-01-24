@@ -29,7 +29,7 @@ spec:
               value: 'true'
             - name: KEYCLOAK_URL
               value: >-
-                https://keycloak-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/
+                https://sso.dev.apicur.io/
             - name: KEYCLOAK_REALM
               value: apicurio
             - name: KEYCLOAK_API_CLIENT_ID

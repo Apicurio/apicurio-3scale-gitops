@@ -7,6 +7,7 @@ metadata:
     app: keycloak
   name: keycloak
 spec:
+  host: sso.dev.apicur.io
   tls:
     termination: edge
   to:

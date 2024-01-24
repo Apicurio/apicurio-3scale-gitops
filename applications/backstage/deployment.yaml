@@ -46,11 +46,11 @@ spec:
                   name: rds-backstage-credentials
                   key: password
             - name: APP_CONFIG_BACKEND
-              value: "https://backstage-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/"
+              value: "https://backstage.dev.apicur.io/"
             - name: APP_CONFIG_APP
-              value: "https://backstage-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/"
+              value: "https://backstage.dev.apicur.io/"
             - name: APICURIO_ENDPOINT
-              value: "https://apicurio-registry-api-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/"
+              value: "https://registry-api.dev.apicur.io/"
             - name: "APP_CONFIG_backend_database_connection_ssl_require"
               value: "true"
             - name: "APP_CONFIG_backend_database_connection_ssl_rejectUnauthorized"

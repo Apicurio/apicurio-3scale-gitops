@@ -8,6 +8,7 @@ metadata:
     app: backstage
     template: backstage
 spec:
+  host: backstage.dev.apicur.io
   to:
     kind: Service
     name: backstage

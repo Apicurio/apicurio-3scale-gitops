@@ -37,10 +37,10 @@ spec:
               value: 'true'
             - name: OIDC_TOKENT_ENDPOINT
               value: >-
-                https://keycloak-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/realms/apicurio
+                https://sso.dev.apicur.io/realms/apicurio
             - name: OIDC_URL
               value: >-
-                https://keycloak-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/realms/apicurio
+                https://sso.dev.apicur.io/realms/apicurio
             - name: OIDC_API_CLIENT_ID
               value: designer-api
             - name: DESIGNER_STORAGE_DB_KIND

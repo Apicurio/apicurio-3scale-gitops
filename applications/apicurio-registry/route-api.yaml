@@ -9,6 +9,7 @@ metadata:
     app: apicurio-registry
     template: apicurio-registry-api
 spec:
+  host: registry-api.dev.apicur.io
   to:
     kind: Service
     name: apicurio-registry-api
