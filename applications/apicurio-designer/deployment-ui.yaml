@@ -31,7 +31,7 @@ spec:
               value: oidc
             - name: DESIGNER_AUTH_URL
               value: >-
-                https://keycloak-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/realms/apicurio
+                https://sso.dev.apicur.io/realms/apicurio
             - name: DESIGNER_AUTH_CLIENT_ID
               value: designer-ui
             - name: DESIGNER_AUTH_REDIRECT_URL
