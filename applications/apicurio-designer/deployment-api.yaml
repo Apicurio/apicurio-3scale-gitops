@@ -60,9 +60,6 @@ spec:
                 secretKeyRef:
                   name: rds-apicurio-designer-credentials
                   key: host
-            - name: DESIGNER_STORAGE_DATASOURCE_URL
-              value: >-
-                jdbc:postgresql://${DESIGNER_DATASOURCE_HOST}:${DESIGNER_DATASOURCE_PORT}/${DESIGNER_DATABASE}
             - name: DESIGNER_STORAGE_DATASOURCE_USERNAME
               valueFrom:
                 secretKeyRef:
@@ -73,6 +70,9 @@ spec:
                 secretKeyRef:
                   name: rds-apicurio-designer-credentials
                   key: password
+            - name: DESIGNER_STORAGE_DATASOURCE_URL
+              value: >-
+                jdbc:postgresql://${DESIGNER_DATASOURCE_HOST}:${DESIGNER_DATASOURCE_PORT}/${DESIGNER_DATASOURCE_DATABASE}
           resources:
             limits:
               cpu: 400m
