@@ -75,7 +75,7 @@ spec:
                 jdbc:postgresql://${DESIGNER_DATASOURCE_HOST}:${DESIGNER_DATASOURCE_PORT}/${DESIGNER_DATASOURCE_DATABASE}
           resources:
             limits:
-              cpu: 400m
+              cpu: 500m
               memory: 1000Mi
             requests:
               cpu: 200m
