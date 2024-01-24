@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - image: >-
-            quay.io/apicurio/apicurio-registry@sha256:3599e9ea909ee0cfc34690c380305a01d267bf32b490bad910908c7f87dc60ce
+            quay.io/apicurio/apicurio-registry@sha256:11b537fcd6c317af7fa4775e32180cf35bbe7766887505fa86858de8ca0d2e8e
           name: apicurio-registry-api
           ports:
             - name: web
@@ -28,8 +28,7 @@ spec:
             - name: AUTH_ENABLED
               value: 'true'
             - name: KEYCLOAK_URL
-              value: >-
-                https://sso.dev.apicur.io/
+              value: 'https://sso.dev.apicur.io/'
             - name: KEYCLOAK_REALM
               value: apicurio
             - name: KEYCLOAK_API_CLIENT_ID

@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - image: >-
-            quay.io/apicurio/apicurio-registry-ui@sha256:033fd74c70d1816b7d4fa3fd40a72616dbf135aa255818bcb8c85150583b7e0f
+            quay.io/apicurio/apicurio-registry-ui@sha256:66cd565b57969773e5cc11867494fff63c51b9d93342b5fb373bd135fb97d6a2
           name: apicurio-registry-ui
           ports:
             - name: web
@@ -26,16 +26,13 @@ spec:
               protocol: TCP
           env:
             - name: REGISTRY_API_URL
-              value: >-
-                https://registry-api.dev.apicur.io/apis/registry/v2
+              value: 'https://registry-api.dev.apicur.io/apis/registry/v2'
             - name: REGISTRY_AUTH_TYPE
               value: oidc
             - name: REGISTRY_AUTH_URL
-              value: >-
-                https://sso.dev.apicur.io/realms/apicurio
+              value: 'https://sso.dev.apicur.io/realms/apicurio'
             - name: REGISTRY_AUTH_REDIRECT_URL
-              value: >-
-                https://registry.dev.apicur.io/
+              value: 'https://registry.dev.apicur.io/'
             - name: REGISTRY_AUTH_CLIENT_ID
               value: registry-ui
             - name: REGISTRY_AUTH_CLIENT_SCOPES
