@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - image: >-
-            quay.io/apicurio/apicurio-api-designer-ui@sha256:aa87bc367755334a067e0db6330fbf6215863cdbeca73dbfdb3f70f279aacc8b
+            quay.io/apicurio/apicurio-api-designer-ui@sha256:1d5c8a24104bd49634672ae2b182048885e2f5028a8a06e9a82b7705c287e8fc
           name: apicurio-designer-ui
           ports:
             - name: web
@@ -30,8 +30,7 @@ spec:
             - name: DESIGNER_AUTH_TYPE
               value: oidc
             - name: DESIGNER_AUTH_URL
-              value: >-
-                https://sso.dev.apicur.io/realms/apicurio
+              value: 'https://sso.dev.apicur.io/realms/apicurio'
             - name: DESIGNER_AUTH_CLIENT_ID
               value: designer-ui
             - name: DESIGNER_AUTH_REDIRECT_URL

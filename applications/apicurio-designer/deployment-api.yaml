@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - image: >-
-            quay.io/apicurio/apicurio-api-designer@sha256:172dcc280db0ca4941a3a700922ed331f8d3acb680ac21ca0f1905b96835878d
+            quay.io/apicurio/apicurio-api-designer@sha256:f558125c8d0211d2a7377fe10fbbf98c401ad92c7d65cb8850d277f3a5d3c3a9
           name: apicurio-designer-api
           ports:
             - name: web
@@ -36,15 +36,13 @@ spec:
             - name: AUTH_ENABLED
               value: 'true'
             - name: OIDC_TOKENT_ENDPOINT
-              value: >-
-                https://sso.dev.apicur.io/realms/apicurio
+              value: 'https://sso.dev.apicur.io/realms/apicurio'
             - name: OIDC_URL
-              value: >-
-                https://sso.dev.apicur.io/realms/apicurio
+              value: 'https://sso.dev.apicur.io/realms/apicurio'
             - name: OIDC_API_CLIENT_ID
               value: designer-api
             - name: DESIGNER_STORAGE_DB_KIND
-              value: "postgresql"
+              value: postgresql
             - name: DESIGNER_DATASOURCE_DATABASE
               valueFrom:
                 secretKeyRef:
