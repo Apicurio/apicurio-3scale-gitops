@@ -33,6 +33,8 @@ spec:
               value: apicurio
             - name: KEYCLOAK_API_CLIENT_ID
               value: registry-api
+            - name: REGISTRY_UI_AUTH_OIDC_CLIENTID
+              value: registry-ui
             - name: REGISTRY_LOG_LEVEL
               value: DEBUG
             - name: LOG_LEVEL
