@@ -26,21 +26,7 @@ spec:
               protocol: TCP
           env:
             - name: REGISTRY_API_URL
-              value: 'https://registry-api.dev.apicur.io/apis/registry/v2'
-            - name: REGISTRY_AUTH_TYPE
-              value: oidc
-            - name: REGISTRY_AUTH_URL
-              value: 'https://sso.dev.apicur.io/realms/apicurio'
-            - name: REGISTRY_AUTH_REDIRECT_URL
-              value: 'https://registry.dev.apicur.io/'
-            - name: REGISTRY_AUTH_CLIENT_ID
-              value: registry-ui
-            - name: REGISTRY_AUTH_CLIENT_SCOPES
-              value: openid profile email
-            - name: REGISTRY_AUTH_RBAC_ENABLED
-              value: 'true'
-            - name: REGISTRY_FEATURE_ROLE_MANAGEMENT
-              value: 'true'
+              value: 'https://registry-api.dev.apicur.io/apis/registry/v3'
           resources:
             limits:
               cpu: 500m
