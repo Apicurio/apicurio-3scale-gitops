@@ -7,7 +7,7 @@ metadata:
     strimzi.io/use-connector-resources: "true"
 spec:
   version: 3.5.1
-  replicas: 1
+  replicas: 0
   bootstrapServers: kafka-cluster-kafka-bootstrap:9093
   tls:
     trustedCertificates:
