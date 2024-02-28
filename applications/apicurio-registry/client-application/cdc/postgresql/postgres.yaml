@@ -7,7 +7,7 @@ metadata:
 spec:
   containers:
     - name: postgres
-      image: quay.io/debezium/example-postgres:2.3
+      image: quay.io/debezium/example-postgres:2.6
       env:
         - name: POSTGRES_USER
           valueFrom:
