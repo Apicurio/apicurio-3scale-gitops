@@ -1,0 +1,136 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: probe-application
+    template: probe-application-registry
+  name: probe-application
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: probe-application
+      template: probe-application-registry
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: probe-application
+        template: probe-application-registry
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app
+                      operator: In
+                      values:
+                        - probe-application
+                    - key: template
+                      operator: In
+                      values:
+                        - probe-application-registry
+                topologyKey: failure-domain.beta.kubernetes.io/zone
+              weight: 100
+      containers:
+        - env:
+            - name: QUARKUS_HTTP_PORT
+              value: "8080"
+            - name: CONCURRENT_TASKS
+              value: "1"
+            - name: REGISTRY_URL
+              value: https://registry-api.dev.apicur.io
+            - name: AUTH_TOKEN_ENDPOINT
+              value: https://sso.dev.apicur.io/realms/apicurio/protocol/openid-connect/token
+            - name: AUTH_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  key: client-id
+                  name: probe-application-credentials
+            - name: AUTH_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  key: client-secret
+                  name: probe-application-credentials
+            - name: INVENTORY_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: probe-application-credentials
+                  key: database
+            - name: INVENTORY_DATASOURCE_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: probe-application-credentials
+                  key: port
+            - name: INVENTORY_DATASOURCE_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: probe-application-credentials
+                  key: host
+            - name: QUARKUS_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: probe-application-credentials
+                  key: user
+            - name: QUARKUS_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: probe-application-credentials
+                  key: password
+            - name: QUARKUS_DATASOURCE_JDBC_URL
+              value: >-
+                jdbc:postgresql://${INVENTORY_DATASOURCE_HOST}:${INVENTORY_DATASOURCE_PORT}/${INVENTORY_DATABASE}
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              value: "kafka-cluster-kafka-bootstrap:9092"
+            - name: KAFKA_APICURIO_REGISTRY_URL
+              value: ${REGISTRY_URL}
+            - name: KAFKA_APICURIO_AUTH_CLIENT_ID
+              value: ${AUTH_CLIENT_ID}
+            - name: KAFKA_APICURIO_AUTH_CLIENT_SECRET
+              value: ${AUTH_CLIENT_SECRET}
+            - name: KAFKA_APICURIO_AUTH_SERVICE_TOKEN_ENDPOINT
+              value: ${AUTH_TOKEN_ENDPOINT}
+            - name: QUARKUS_HIBERNATE_ORM_DATABASE_DEFAULT_SCHEMA
+              value: "inventory"
+
+          image: quay.io/apicurio/apicurio-registry-probe@sha256:dd9cc3b59fc6dcf0a34fd4ed2dfdc0da72860fd08dde5e48e31ecbcba1432ffa
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /q/health/live
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+          name: probe-application
+          ports:
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+          readinessProbe:
+            failureThreshold: 5
+            httpGet:
+              path: /q/health/ready
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+          resources:
+            limits:
+              cpu: 500m
+              memory: 1000Mi
+            requests:
+              cpu: 200m
+              memory: 400Mi
+          terminationMessagePath: /dev/termination-log
