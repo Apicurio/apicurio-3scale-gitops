@@ -1,0 +1,39 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaConnector
+metadata:
+  name: postgres-connector0
+  labels:
+    strimzi.io/cluster: kafka-connect-cluster
+spec:
+  class: io.debezium.connector.postgresql.PostgresConnector
+  tasksMax: 1
+  config:
+    database.hostname: ${secrets:rhaf-apicurio/rds-apicurio-registry-client-application-credentials:host}
+    database.port: ${secrets:rhaf-apicurio/rds-apicurio-registry-client-application-credentials:port}
+    database.user: ${secrets:rhaf-apicurio/rds-apicurio-registry-client-application-credentials:user}
+    database.password: ${secrets:rhaf-apicurio/rds-apicurio-registry-client-application-credentials:password}
+    database.dbname: ${secrets:rhaf-apicurio/rds-apicurio-registry-client-application-credentials:database}
+    heartbeat.interval.ms: "1000"
+    plugin.name: "pgoutput"
+    topic.prefix: "server1"
+    schema.include.list: "inventory"
+    key.converter: "io.apicurio.registry.utils.converter.AvroConverter"
+    key.converter.apicurio.registry.url: "https://registry-api.dev.apicur.io"
+    key.converter.apicurio.registry.auto-register: "true"
+    key.converter.apicurio.registry.find-latest: "true"
+    key.converter.apicurio.registry.use-id: "contentId"
+    key.converter.apicurio.registry.as-confluent: "true"
+    key.converter.apicurio.auth.client.id: ${secrets:rhaf-apicurio/probe-application-credentials:client-id}
+    key.converter.apicurio.auth.client.secret: ${secrets:rhaf-apicurio/probe-application-credentials:client-secret}
+    key.converter.apicurio.auth.service.token.endpoint: "https://sso.dev.apicur.io/realms/apicurio/protocol/openid-connect/token"
+    value.converter.apicurio.auth.client.id: ${secrets:rhaf-apicurio/probe-application-credentials:client-id}
+    value.converter.apicurio.auth.client.secret: ${secrets:rhaf-apicurio/probe-application-credentials:client-secret}
+    value.converter.apicurio.auth.service.token.endpoint: "https://sso.dev.apicur.io/realms/apicurio/protocol/openid-connect/token"
+    value.converter: "io.apicurio.registry.utils.converter.AvroConverter"
+    value.converter.apicurio.registry.url: "https://registry-api.dev.apicur.io"
+    value.converter.apicurio.registry.auto-register: "true"
+    value.converter.apicurio.registry.find-latest: "true"
+    value.converter.apicurio.registry.as-confluent: "true"
+    value.converter.apicurio.registry.use-id: "contentId"
+    schema.name.adjustment.mode: "avro"
+    field.name.adjustment.mode: "avro"
