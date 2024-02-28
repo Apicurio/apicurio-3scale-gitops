@@ -21,6 +21,9 @@ spec:
               key: database
         - name: POSTGRES_DB
           value: postgres
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata
+
 ---
 apiVersion: v1
 kind: Service
