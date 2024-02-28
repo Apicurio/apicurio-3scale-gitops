@@ -9,3 +9,7 @@ resources:
   - service-ui.yaml
   - route-ui.yaml
   - psql-client.yaml
+  - client-application/cdc/kafka/strimzi.yaml
+  - probe-application/probe-application-external-secrets.yaml
+  - client-application/cdc/connectors/rds-external-secrets.yaml
+  - client-application/cdc/postgresql/postgres.yaml
