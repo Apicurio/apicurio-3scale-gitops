@@ -99,7 +99,7 @@ spec:
             - name: QUARKUS_HIBERNATE_ORM_DATABASE_DEFAULT_SCHEMA
               value: "postgres"
 
-          image: quay.io/apicurio/apicurio-registry-probe@sha256:dd9cc3b59fc6dcf0a34fd4ed2dfdc0da72860fd08dde5e48e31ecbcba1432ffa
+          image: quay.io/apicurio/apicurio-registry-probe@sha256:9fd82c43c2f315cf1cd7c1e173e3afc7d25b2d185b613ef02ac92271276954b4
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 3
