@@ -6,7 +6,7 @@ metadata:
     template: probe-application-registry
   name: probe-application
 spec:
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels:
       app: probe-application
@@ -97,7 +97,7 @@ spec:
             - name: KAFKA_APICURIO_AUTH_SERVICE_TOKEN_ENDPOINT
               value: ${AUTH_TOKEN_ENDPOINT}
             - name: QUARKUS_HIBERNATE_ORM_DATABASE_DEFAULT_SCHEMA
-              value: "inventory"
+              value: "postgres"
 
           image: quay.io/apicurio/apicurio-registry-probe@sha256:dd9cc3b59fc6dcf0a34fd4ed2dfdc0da72860fd08dde5e48e31ecbcba1432ffa
           imagePullPolicy: IfNotPresent
