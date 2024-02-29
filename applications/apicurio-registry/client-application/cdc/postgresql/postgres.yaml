@@ -18,7 +18,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: probe-application-credentials
-              key: database
+              key: password
         - name: POSTGRES_DB
           value: postgres
         - name: PGDATA
