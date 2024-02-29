@@ -97,7 +97,7 @@ spec:
             - name: KAFKA_APICURIO_AUTH_SERVICE_TOKEN_ENDPOINT
               value: ${AUTH_TOKEN_ENDPOINT}
             - name: QUARKUS_HIBERNATE_ORM_DATABASE_DEFAULT_SCHEMA
-              value: "postgres"
+              value: "inventory"
 
           image: quay.io/apicurio/apicurio-registry-probe@sha256:9fd82c43c2f315cf1cd7c1e173e3afc7d25b2d185b613ef02ac92271276954b4
           imagePullPolicy: IfNotPresent
