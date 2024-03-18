@@ -9,6 +9,7 @@ const PASSWORD: string = process.env["TEST_PASSWORD"] || "password";
 
 
 test("End to End Test (Registry)", async ({ page }) => {
+    const testArtifactId = `TestArtifact-${Date.now()}`;
     await page.goto(REGISTRY_URL);
 
     await expect(page).toHaveTitle(/Sign in to apicurio/, { timeout: 10000 });
@@ -29,17 +30,17 @@ test("End to End Test (Registry)", async ({ page }) => {
 
     // Upload a new artifact
     await page.getByTestId("upload-artifact-form-group").fill("e2e.tester");
-    await page.getByTestId("upload-artifact-form-id").fill("TestArtifact");
+    await page.getByTestId("upload-artifact-form-id").fill(testArtifactId);
     await page.getByTestId("upload-artifact-form-type-select").click();
     await page.getByTestId("upload-artifact-form-OPENAPI").click();
     await page.locator("#artifact-content").fill(OPENAPI_DATA_STR);
     await page.getByTestId("upload-artifact-modal-btn-upload").click();
 
     // Make sure we redirected to the artifact detail page.
-    await expect(page).toHaveURL(/.+\/artifacts\/e2e.tester\/TestArtifact\/versions\/latest/);
+    await expect(page).toHaveURL(/.+\/artifacts\/e2e.tester\/TestArtifact-[\d]+\/versions\/latest/);
 
     // Assert the meta-data is as expected
-    await expect(page.getByTestId("artifact-details-id")).toHaveText("TestArtifact");
+    await expect(page.getByTestId("artifact-details-id")).toHaveText(testArtifactId);
     await expect(page.getByTestId("artifact-details-state")).toHaveText("ENABLED");
 
     // Click the "Edit" button to show the Edit Metadata modal
@@ -56,7 +57,7 @@ test("End to End Test (Registry)", async ({ page }) => {
     // Assert the meta-data is as expected
     await expect(page.getByTestId("artifact-details-name")).toHaveText("My Empty API");
     await expect(page.getByTestId("artifact-details-description")).toHaveText("A simple empty API.");
-    await expect(page.getByTestId("artifact-details-id")).toHaveText("TestArtifact");
+    await expect(page.getByTestId("artifact-details-id")).toHaveText(testArtifactId);
     await expect(page.getByTestId("artifact-details-state")).toHaveText("ENABLED");
 
     // Delete the artifact
