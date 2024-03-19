@@ -36,8 +36,8 @@ spec:
             - name: QUARKUS_OIDC_TENANT-ENABLED
               value: 'true'
             - name: QUARKUS.OIDC.TOKEN-PATH
-              value: 'https://sso.dev.apicur.io/realms/apicurio'
-            - name: QUARKUS.OIDC.AUTH-SEVER-URL
+              value: 'https://sso.dev.apicur.io/realms/apicurio/protocol/openid-connect/token'
+            - name: QUARKUS.OIDC.AUTH-SERVER-URL
               value: 'https://sso.dev.apicur.io/realms/apicurio'
             - name: QUARKUS.OIDC.CLIENT-ID
               value: designer-api
