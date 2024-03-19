@@ -25,15 +25,15 @@ spec:
               containerPort: 8080
               protocol: TCP
           env:
-            - name: DESIGNER_API_URL
+            - name: APICURIO_DESIGNER_API_URL
               value: 'https://designer-api.dev.apicur.io/apis/designer/v0'
-            - name: DESIGNER_AUTH_TYPE
+            - name: APICURIO_AUTH_TYPE
               value: oidc
-            - name: DESIGNER_AUTH_URL
+            - name: APICURIO_AUTH_URL
               value: 'https://sso.dev.apicur.io/realms/apicurio'
-            - name: DESIGNER_AUTH_CLIENT_ID
+            - name: APICURIO_AUTH_CLIENT_ID
               value: designer-ui
-            - name: DESIGNER_AUTH_REDIRECT_URL
+            - name: APICURIO_AUTH_REDIRECT_URL
               value: 'https://designer.dev.apicur.io/'
           resources:
             limits:
