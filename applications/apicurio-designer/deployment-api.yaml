@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - image: >-
-            quay.io/apicurio/apicurio-api-designer@sha256:8a86755ce9019a685cc536bbedd11cf7917bb1c2a9612291553ece653c77a5e0
+            quay.io/apicurio/apicurio-api-designer@sha256:51ddcfb041de8e8ceee870c4161c64aa0b517d9b41dc562c1c872fd9e3aeaa25
           name: apicurio-designer-api
           ports:
             - name: web
@@ -36,7 +36,8 @@ spec:
             - name: QUARKUS_OIDC_TENANT-ENABLED
               value: 'true'
             - name: QUARKUS.OIDC.TOKEN-PATH
-              value: 'https://sso.dev.apicur.io/realms/apicurio/protocol/openid-connect/token'
+              value: >-
+                https://sso.dev.apicur.io/realms/apicurio/protocol/openid-connect/token
             - name: QUARKUS.OIDC.AUTH-SERVER-URL
               value: 'https://sso.dev.apicur.io/realms/apicurio'
             - name: QUARKUS.OIDC.CLIENT-ID
