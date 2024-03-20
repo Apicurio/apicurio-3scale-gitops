@@ -1,18 +1,18 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: apicurio-designer-api
+  name: apicurio-studio-ui
   # TODO add the annotation as an overlay patch
   annotations:
     kubernetes.io/tls-acme: "true"
   labels:
-    app: apicurio-designer
-    template: apicurio-designer-api
+    app: apicurio-studio
+    template: apicurio-studio-ui
 spec:
-  host: designer-api.dev.apicur.io
+  host: studio.dev.apicur.io
   to:
     kind: Service
-    name: apicurio-designer-api
+    name: apicurio-studio-ui
     weight: 100
   tls:
     termination: edge

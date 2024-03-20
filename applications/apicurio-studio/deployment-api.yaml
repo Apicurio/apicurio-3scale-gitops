@@ -2,24 +2,24 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: apicurio-designer
-    component: apicurio-designer-api
-  name: apicurio-designer-api
+    app: apicurio-studio
+    component: apicurio-studio-api
+  name: apicurio-studio-api
 spec:
   replicas: 1
   selector:
     matchLabels:
-      component: apicurio-designer-api
+      component: apicurio-studio-api
   template:
     metadata:
       labels:
-        app: apicurio-designer
-        component: apicurio-designer-api
+        app: apicurio-studio
+        component: apicurio-studio-api
     spec:
       containers:
         - image: >-
             quay.io/apicurio/apicurio-studio@sha256:5bb75958183bb36f4248d8b4fa9e63c4d7092586cda6b92cae467d5a3b82b72d
-          name: apicurio-designer-api
+          name: apicurio-studio-api
           ports:
             - name: web
               containerPort: 8080
@@ -35,29 +35,29 @@ spec:
               value: '*'
             - name: QUARKUS_OIDC_TENANT-ENABLED
               value: 'true'
-            - name: QUARKUS.OIDC.TOKEN-PATH
+            - name: QUARKUS.OIDC.TOKEN-PATH  
               value: >-
                 https://sso.dev.apicur.io/realms/apicurio/protocol/openid-connect/token
             - name: QUARKUS.OIDC.AUTH-SERVER-URL
               value: 'https://sso.dev.apicur.io/realms/apicurio'
             - name: QUARKUS.OIDC.CLIENT-ID
-              value: designer-api
+              value: studio-api
             - name: APICURIO_STORAGE_DB_KIND
               value: postgresql
             - name: APICURIO_DATASOURCE_DATABASE
               valueFrom:
                 secretKeyRef:
-                  name: rds-apicurio-designer-credentials
+                  name: rds-apicurio-studio-credentials
                   key: database
             - name: APICURIO_DATASOURCE_PORT
               valueFrom:
                 secretKeyRef:
-                  name: rds-apicurio-designer-credentials
+                  name: rds-apicurio-studio-credentials
                   key: port
             - name: APICURIO_DATASOURCE_HOST
               valueFrom:
                 secretKeyRef:
-                  name: rds-apicurio-designer-credentials
+                  name: rds-apicurio-studio-credentials
                   key: host
             - name: APICURIO_DATASOURCE_URL
               value: >-
@@ -65,12 +65,12 @@ spec:
             - name: APICURIO_DATASOURCE_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: rds-apicurio-designer-credentials
+                  name: rds-apicurio-studio-credentials
                   key: user
             - name: APICURIO_DATASOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: rds-apicurio-designer-credentials
+                  name: rds-apicurio-studio-credentials
                   key: password
           resources:
             limits:

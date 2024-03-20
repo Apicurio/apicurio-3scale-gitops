@@ -2,12 +2,12 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: apicurio-designer
-    template: apicurio-designer-api
-  name: apicurio-designer-api
+    app: apicurio-studio
+    template: apicurio-studio-api
+  name: apicurio-studio-api
 spec:
   selector:
-    component: apicurio-designer-api
+    component: apicurio-studio-api
   ports:
     - name: web
       port: 8080
