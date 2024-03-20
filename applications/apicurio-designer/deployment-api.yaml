@@ -81,7 +81,7 @@ spec:
               memory: 500Mi
           livenessProbe:
             httpGet:
-              path: /apis/designer/v0/system/info
+              path: /apis/studio/v1/system/info
               port: 8080
               scheme: HTTP
             initialDelaySeconds: 10
@@ -91,7 +91,7 @@ spec:
             failureThreshold: 3
           readinessProbe:
             httpGet:
-              path: /apis/designer/v0/system/info
+              path: /apis/studio/v1/system/info
               port: 8080
               scheme: HTTP
             initialDelaySeconds: 10

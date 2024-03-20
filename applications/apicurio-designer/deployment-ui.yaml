@@ -25,8 +25,8 @@ spec:
               containerPort: 8080
               protocol: TCP
           env:
-            - name: APICURIO_DESIGNER_API_URL
-              value: 'https://designer-api.dev.apicur.io/apis/designer/v0'
+            - name: APICURIO_STUDIO_API_URL
+              value: 'https://designer-api.dev.apicur.io/apis/studio/v1'
             - name: APICURIO_AUTH_TYPE
               value: oidc
             - name: APICURIO_AUTH_URL
