@@ -1,12 +1,12 @@
 import { test, expect } from "@playwright/test";
 
-const REGISTRY_URL: string = process.env["DESIGNER_URL"] || "http://localhost:8888";
+const STUDIO_URL: string = process.env["STUDIO_URL"] || "http://localhost:8888";
 const USERNAME: string = process.env["TEST_USERNAME"] || "user";
 const PASSWORD: string = process.env["TEST_PASSWORD"] || "password";
 
 
-test("End to End Test (Designer)", async ({ page }) => {
-    await page.goto(REGISTRY_URL);
+test("End to End Test (Studio)", async ({ page }) => {
+    await page.goto(STUDIO_URL);
 
     await expect(page).toHaveTitle(/Sign in to apicurio/, { timeout: 10000 });
 
@@ -15,8 +15,8 @@ test("End to End Test (Designer)", async ({ page }) => {
     await page.locator("#password").fill(PASSWORD);
     await page.locator("#kc-login").click();
 
-    // Should then redirect to Designer
-    await expect(page).toHaveTitle(/Apicurio API Designer/);
+    // Should then redirect to Studio
+    await expect(page).toHaveTitle(/Apicurio Studio/);
 
     expect(page.getByTestId("btn-create-design")).toBeDefined();
 
