@@ -72,6 +72,10 @@ spec:
                 secretKeyRef:
                   name: rds-apicurio-studio-credentials
                   key: password
+            - name: APICURIO.UI.AUTH.OIDC.CLIENT-ID
+              value: studio-ui
+            - name: APICURIO.UI.AUTH.OIDC.REDIRECT-URI
+              value: 'https://studio.dev.apicur.io/'
           resources:
             limits:
               cpu: 500m

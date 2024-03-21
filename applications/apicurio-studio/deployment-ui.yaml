@@ -27,14 +27,6 @@ spec:
           env:
             - name: APICURIO_STUDIO_API_URL
               value: 'https://studio-api.dev.apicur.io/apis/studio/v1'
-            - name: APICURIO_AUTH_TYPE
-              value: oidc
-            - name: APICURIO_AUTH_URL
-              value: 'https://sso.dev.apicur.io/realms/apicurio'
-            - name: APICURIO_AUTH_CLIENT_ID
-              value: studio-ui
-            - name: APICURIO_AUTH_REDIRECT_URL
-              value: 'https://studio.dev.apicur.io/'
           resources:
             limits:
               cpu: 200m
