@@ -39,13 +39,13 @@ deploy DEV versions of our Apicurio applications.
 
 ## Applications
 
-- [Keycloak](https://keycloak-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/)
+- [Keycloak](https://sso.dev.apicur.io/)
 
-- [Backstage](https://backstage-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/)
+- [Backstage](https://backstage.dev.apicur.io/)
   
-- [Apicurio Registry](https://apicurio-registry-ui-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/)
+- [Apicurio Registry](https://registry.dev.apicur.io/)
 
-- [Apicurio Designer](https://apicurio-designer-ui-rhaf-apicurio.apps.dev-eng-ocp4-mas.dev.3sca.net/)
+- [Apicurio Studio](https://studio.dev.apicur.io/)
 
 # Cluster and Namespace
 
@@ -259,16 +259,16 @@ spec:
 
 # Automatic Deployments
 
-The Registry and Designer applications are each configured to automatically deploy the latest snapshot
+The Registry and Studio applications are each configured to automatically deploy the latest snapshot
 version whenever that version is built.  This is accomplished through GitHub workflows configured in
 the following locations:
 
 * [apicurio-registry/.github/workflows/verify.yaml](https://github.com/Apicurio/apicurio-registry/blob/main/.github/workflows/verify.yaml)
-* [apicurio-api-designer/.github/workflows/verify.yaml](https://github.com/Apicurio/apicurio-api-designer/blob/main/.github/workflows/verify.yaml)
+* [apicurio-studio/.github/workflows/verify.yaml](https://github.com/Apicurio/apicurio-studio/blob/main/.github/workflows/verify.yaml)
 * [apicurio-3scale-gitops/.github/workflows/deploy_latest_registry.yml](https://github.com/Apicurio/apicurio-3scale-gitops/blob/main/.github/workflows/deploy_latest_registry.yml)
-* [apicurio-3scale-gitops/.github/workflows/deploy_latest_designer.yml](https://github.com/Apicurio/apicurio-3scale-gitops/blob/main/.github/workflows/deploy_latest_designer.yml)
+* [apicurio-3scale-gitops/.github/workflows/deploy_latest_studio.yml](https://github.com/Apicurio/apicurio-3scale-gitops/blob/main/.github/workflows/deploy_latest_studio.yml)
 
-Whenever a change is made to `main` for either apicurio-registry or apicurio-api-designer, the
+Whenever a change is made to `main` for either apicurio-registry or apicurio-studio, the
 standard Verify workflow is run.  That workflow builds and tests the software, and then it
 builds and pushes docker containers tagged with `latest-snapshot`.  Each of those workflows
 has a job called `trigger-3scale-deploy` which will trigger the appropriate `deploy_latest_*.yaml`
