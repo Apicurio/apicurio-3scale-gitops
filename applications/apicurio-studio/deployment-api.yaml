@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - image: >-
-            quay.io/apicurio/apicurio-studio@sha256:a724c3f684c2579111c9b756cebc54a63d6d1a5138e58ef9f8e832ecc6587be3
+            quay.io/apicurio/apicurio-studio@sha256:8ca312e126ca1f837a834d05c6bae2d57ec087c9aa33485bd289b8748765f441
           name: apicurio-studio-api
           ports:
             - name: web
@@ -77,7 +77,8 @@ spec:
             - name: APICURIO_UI_AUTH_OIDC_REDIRECT-URI
               value: 'https://studio.dev.apicur.io/'
             - name: APICURIO_UI_OPENAPI_VENDOR-EXTENSIONS_URL
-              value: 'https://raw.githubusercontent.com/Apicurio/apicurio-studio/main/app/src/main/resources/extensions/vendor-extensions.json'
+              value: >-
+                https://raw.githubusercontent.com/Apicurio/apicurio-studio/main/app/src/main/resources/extensions/vendor-extensions.json
           resources:
             limits:
               cpu: 500m
