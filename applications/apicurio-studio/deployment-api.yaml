@@ -72,10 +72,12 @@ spec:
                 secretKeyRef:
                   name: rds-apicurio-studio-credentials
                   key: password
-            - name: APICURIO.UI.AUTH.OIDC.CLIENT-ID
+            - name: APICURIO_UI_AUTH_OIDC_CLIENT-ID
               value: studio-ui
-            - name: APICURIO.UI.AUTH.OIDC.REDIRECT-URI
+            - name: APICURIO_UI_AUTH_OIDC_REDIRECT-URI
               value: 'https://studio.dev.apicur.io/'
+            - name: APICURIO_UI_OPENAPI_VENDOR-EXTENSIONS_URL
+              value: 'https://raw.githubusercontent.com/Apicurio/apicurio-studio/main/app/src/main/resources/extensions/vendor-extensions.json'
           resources:
             limits:
               cpu: 500m
