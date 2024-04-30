@@ -25,62 +25,62 @@ spec:
               containerPort: 8080
               protocol: TCP
           env:
-            - name: AUTH_ENABLED
+            - name: QUARKUS_OIDC_TENANT_ENABLED
               value: 'true'
-            - name: KEYCLOAK_URL
-              value: 'https://sso.dev.apicur.io/'
-            - name: KEYCLOAK_REALM
-              value: apicurio
-            - name: KEYCLOAK_API_CLIENT_ID
+            - name: QUARKUS_OIDC_AUTH_SERVER_URL
+              value: 'https://sso.dev.apicur.io/realms/apicurio'
+            - name: QUARKUS_OIDC_TOKEN_PATH
+              value: 'https://sso.dev.apicur.io/realms/apicurio/protocol/openid-connect/token'
+            - name: QUARKUS_OIDC_CLIENT_ID
               value: registry-api
-            - name: REGISTRY_UI_AUTH_OIDC_CLIENTID
+            - name: APICURIO_UI_AUTH_OIDC_CLIENTID
               value: registry-ui
-            - name: REGISTRY_LOG_LEVEL
+            - name: APICURIO_LOG_LEVEL
               value: DEBUG
             - name: LOG_LEVEL
               value: INFO
             - name: QUARKUS_PROFILE
               value: prod
-            - name: REGISTRY_CONFIG_CACHE_ENABLED
+            - name: APICURIO_CONFIG_CACHE_ENABLED
               value: 'true'
-            - name: CORS_ALLOWED_ORIGINS
+            - name: QUARKUS_HTTP_CORS_ORIGINS
               value: '*'
-            - name: REGISTRY_STORAGE_KIND
+            - name: APICURIO_STORAGE_KIND
               value: sql
-            - name: REGISTRY_STORAGE_DB_KIND
+            - name: APICURIO_STORAGE_SQL_KIND
               value: postgresql
-            - name: CLIENT_CREDENTIALS_BASIC_AUTH_ENABLED
+            - name: APICURIO_AUTHN_BASIC_CLIENT_CREDENTIALS_ENABLED
               value: 'true'
-            - name: CLIENT_CREDENTIALS_BASIC_CACHE_EXPIRATION
+            - name: APICURIO_AUTHN_BASIC_CLIENT_CREDENTIALS_CACHE_EXPIRATION
               value: '4'
-            - name: REGISTRY_DATABASE
+            - name: APICURIO_DATABASE
               valueFrom:
                 secretKeyRef:
                   name: rds-apicurio-registry-credentials
                   key: database
-            - name: REGISTRY_DATASOURCE_PORT
+            - name: APICURIO_DATASOURCE_PORT
               valueFrom:
                 secretKeyRef:
                   name: rds-apicurio-registry-credentials
                   key: port
-            - name: REGISTRY_DATASOURCE_HOST
+            - name: APICURIO_DATASOURCE_HOST
               valueFrom:
                 secretKeyRef:
                   name: rds-apicurio-registry-credentials
                   key: host
-            - name: REGISTRY_DATASOURCE_USERNAME
+            - name: APICURIO_DATASOURCE_USERNAME
               valueFrom:
                 secretKeyRef:
                   name: rds-apicurio-registry-credentials
                   key: user
-            - name: REGISTRY_DATASOURCE_PASSWORD
+            - name: APICURIO_DATASOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: rds-apicurio-registry-credentials
                   key: password
-            - name: REGISTRY_DATASOURCE_URL
+            - name: APICURIO_DATASOURCE_URL
               value: >-
-                jdbc:postgresql://${REGISTRY_DATASOURCE_HOST}:${REGISTRY_DATASOURCE_PORT}/${REGISTRY_DATABASE}
+                jdbc:postgresql://${APICURIO_DATASOURCE_HOST}:${APICURIO_DATASOURCE_PORT}/${APICURIO_DATABASE}
             - name: REGISTRY_APIS_V2_DATE_FORMAT
               value: 'yyyy-MM-dd''T''HH:mm:ssZ'
           resources:
