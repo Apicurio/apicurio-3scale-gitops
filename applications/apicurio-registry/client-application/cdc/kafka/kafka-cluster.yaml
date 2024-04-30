@@ -6,7 +6,7 @@ metadata:
     app.kubernetes.io/part-of: cloud
 spec:
   kafka:
-    version: 3.5.1
+    version: 3.6.0
     replicas: 1
     listeners:
       - name: plain
