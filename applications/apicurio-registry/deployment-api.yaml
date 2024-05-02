@@ -34,7 +34,7 @@ spec:
                 https://sso.dev.apicur.io/realms/apicurio/protocol/openid-connect/token
             - name: QUARKUS_OIDC_CLIENT_ID
               value: registry-api
-            - name: APICURIO_UI_AUTH_OIDC_CLIENTID
+            - name: APICURIO_UI_AUTH_OIDC_CLIENT_ID
               value: registry-ui
             - name: APICURIO_LOG_LEVEL
               value: DEBUG
