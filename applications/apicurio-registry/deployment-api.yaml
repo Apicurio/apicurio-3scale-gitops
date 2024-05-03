@@ -36,7 +36,8 @@ spec:
               value: registry-api
             - name: APICURIO_UI_AUTH_OIDC_CLIENT_ID
               value: registry-ui
-            - name: APICURIO_LOG_LEVEL
+            - name: APICURIO_UI_AUTH_OIDC_REDIRECT_URI
+            - name: "https://registry.dev.apicur.io"
               value: DEBUG
             - name: LOG_LEVEL
               value: INFO
