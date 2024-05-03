@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - image: >-
-            quay.io/apicurio/apicurio-registry@sha256:d44a29d73f56eb6c038c2aebfb442c2989bb7a1e9756fc71a4b5f07ee3c22af7
+            quay.io/apicurio/apicurio-registry@sha256:e7e37b49839a23c4e98010e05eb7801adae486d9bc21109fec1b02c6ad42bf01
           name: apicurio-registry-api
           ports:
             - name: web
@@ -37,7 +37,7 @@ spec:
             - name: APICURIO_UI_AUTH_OIDC_CLIENT_ID
               value: registry-ui
             - name: APICURIO_UI_AUTH_OIDC_REDIRECT_URI
-              value: "https://registry.dev.apicur.io"
+              value: 'https://registry.dev.apicur.io'
             - name: APICURIO_LOG_LEVEL
               value: DEBUG
             - name: LOG_LEVEL
