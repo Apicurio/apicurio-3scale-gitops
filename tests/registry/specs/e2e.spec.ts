@@ -45,7 +45,7 @@ test("End to End Test (Registry)", async ({ page }) => {
 
     // Click the "Edit" button to show the Edit Metadata modal
     await page.getByTestId("artifact-btn-edit").click();
-    await expect(page.getByTestId("edit-metadata-modal-name")).toHaveValue("Empty API Spec");
+    await expect(page.getByTestId("edit-metadata-modal-name")).toBeEmpty();
 
     // Change/add some values
     await page.getByTestId("edit-metadata-modal-name").fill("My Empty API");
