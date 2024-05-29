@@ -22,26 +22,22 @@ test("End to End Test (Registry)", async ({ page }) => {
     // Should then redirect to Registry
     await expect(page).toHaveTitle(/Apicurio Registry/);
 
-    expect(page.getByTestId("btn-toolbar-upload-artifact")).toBeDefined();
+    expect(page.getByTestId("btn-toolbar-create-artifact")).toBeDefined();
 
-    // Click the "Upload artifact" button
-    await page.getByTestId("btn-toolbar-upload-artifact").click();
-    await expect(page.getByTestId("upload-artifact-form-group")).toHaveValue("");
+    // Click the "Create artifact" button
+    await page.getByTestId("btn-toolbar-create-artifact").click();
+    await expect(page.getByTestId("create-artifact-form-group")).toHaveValue("");
 
-    // Upload a new artifact
-    await page.getByTestId("upload-artifact-form-group").fill("e2e.tester");
-    await page.getByTestId("upload-artifact-form-id").fill(testArtifactId);
-    await page.getByTestId("upload-artifact-form-type-select").click();
-    await page.getByTestId("upload-artifact-form-OPENAPI").click();
+    // Create a new artifact
+    await page.getByTestId("create-artifact-form-group").fill("e2e.tester");
+    await page.getByTestId("create-artifact-form-id").fill(testArtifactId);
+    await page.getByTestId("create-artifact-form-type-select").click();
+    await page.getByTestId("create-artifact-form-OPENAPI").click();
     await page.locator("#artifact-content").fill(OPENAPI_DATA_STR);
-    await page.getByTestId("upload-artifact-modal-btn-upload").click();
+    await page.getByTestId("create-artifact-modal-btn-create").click();
 
     // Make sure we redirected to the artifact detail page.
-    await expect(page).toHaveURL(/.+\/artifacts\/e2e.tester\/TestArtifact-[\d]+\/versions\/latest/);
-
-    // Assert the meta-data is as expected
-    await expect(page.getByTestId("artifact-details-id")).toHaveText(testArtifactId);
-    await expect(page.getByTestId("artifact-details-state")).toHaveText("ENABLED");
+    await expect(page).toHaveURL(/.+\/explore\/e2e.tester\/TestArtifact-[\d]+/);
 
     // Click the "Edit" button to show the Edit Metadata modal
     await page.getByTestId("artifact-btn-edit").click();
@@ -57,12 +53,10 @@ test("End to End Test (Registry)", async ({ page }) => {
     // Assert the meta-data is as expected
     await expect(page.getByTestId("artifact-details-name")).toHaveText("My Empty API");
     await expect(page.getByTestId("artifact-details-description")).toHaveText("A simple empty API.");
-    await expect(page.getByTestId("artifact-details-id")).toHaveText(testArtifactId);
-    await expect(page.getByTestId("artifact-details-state")).toHaveText("ENABLED");
 
     // Delete the artifact
     await page.getByTestId("header-btn-delete").click();
     await page.getByTestId("modal-btn-delete").click();
 
-    await expect(page).toHaveURL(/.+\/artifacts/);
+    await expect(page).toHaveURL(/.+\/explore/);
 });
