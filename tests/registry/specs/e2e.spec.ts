@@ -29,19 +29,39 @@ test("End to End Test (Registry)", async ({ page }) => {
     await expect(page.getByTestId("create-artifact-form-group")).toHaveValue("");
 
     // Create a new artifact
-    await page.getByTestId("create-artifact-form-group").fill("e2e.tester");
-    await page.getByTestId("create-artifact-form-id").fill(testArtifactId);
-    await page.getByTestId("create-artifact-form-type-select").click();
-    await page.getByTestId("create-artifact-form-OPENAPI").click();
+
+    // Fill out page 1 of the create artifact wizard
+    await page.getByTestId("create-artifact-modal-group").fill("e2e.tester");
+    await page.getByTestId("create-artifact-modal-id").fill(testArtifactId);
+    await page.getByTestId("create-artifact-modal-type-select").click();
+    await page.getByTestId("create-artifact-modal-OPENAPI").click();
+
+    // Click "Next" on the wizard
+    await page.locator("#next-wizard-page").click();
+
+    // Fill out page 2 of the create artifact wizard
+    await page.getByTestId("create-artifact-modal-artifact-metadata-name").fill("Test Artifact");
+    await page.getByTestId("create-artifact-modal-artifact-metadata-description").fill("Artifact description.");
+
+    // Click "Next" on the wizard
+    await page.locator("#next-wizard-page").click();
+
+    // Fill out page 3 of the create artifact wizard
+    await page.getByTestId("create-artifact-modal-version").fill("1.0.0");
     await page.locator("#artifact-content").fill(OPENAPI_DATA_STR);
-    await page.getByTestId("create-artifact-modal-btn-create").click();
+
+    // Click "Next" on the wizard
+    await page.locator("#next-wizard-page").click();
+
+    // Leave page 4 empty and click "Complete"
+    await page.locator("#next-wizard-page").click();
 
     // Make sure we redirected to the artifact detail page.
     await expect(page).toHaveURL(/.+\/explore\/e2e.tester\/TestArtifact-[\d]+/);
 
     // Click the "Edit" button to show the Edit Metadata modal
     await page.getByTestId("artifact-btn-edit").click();
-    await expect(page.getByTestId("edit-metadata-modal-name")).toBeEmpty();
+    await expect(page.getByTestId("edit-metadata-modal-name")).toHaveValue("Test Artifact");
 
     // Change/add some values
     await page.getByTestId("edit-metadata-modal-name").fill("My Empty API");
