@@ -26,7 +26,7 @@ test("End to End Test (Registry)", async ({ page }) => {
 
     // Click the "Create artifact" button
     await page.getByTestId("btn-toolbar-create-artifact").click();
-    await expect(page.getByTestId("create-artifact-form-group")).toHaveValue("");
+    await expect(page.getByTestId("create-artifact-modal-group")).toHaveValue("");
 
     // Create a new artifact
 
