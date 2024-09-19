@@ -38,8 +38,8 @@ spec:
               value: registry-ui
             - name: APICURIO_UI_AUTH_OIDC_REDIRECT_URI
               value: 'https://registry.dev.apicur.io'
-            - name: APICURIO_UI_AUTH_OIDC_LOGOUT_URL
-              value: 'about:blank'
+            - name: APICURIO_UI_AUTH_OIDC_LOGOUT-URL
+              value: 'https://www.apicur.io/'
             - name: APICURIO_LOG_LEVEL
               value: DEBUG
             - name: LOG_LEVEL
