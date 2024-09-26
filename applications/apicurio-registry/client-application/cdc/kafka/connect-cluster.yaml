@@ -6,7 +6,7 @@ metadata:
   annotations:
     strimzi.io/use-connector-resources: "true"
 spec:
-  version: 3.6.0
+  version: 3.7.0
   replicas: 1
   bootstrapServers: kafka-cluster-kafka-bootstrap:9093
   tls:
