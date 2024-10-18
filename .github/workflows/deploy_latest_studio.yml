@@ -26,13 +26,6 @@ jobs:
         with:
           node-version: 18
 
-      - name: Get digest (API)
-        run: |
-          docker pull ${{ env.API_IMAGE }}:${{ env.IMAGE_TAG }}
-          docker image inspect ${{ env.API_IMAGE }}:${{ env.IMAGE_TAG }}
-          STUDIO_API_DOCKER_IMAGE=$(docker image inspect --format='{{index .RepoDigests 0}}' ${{ env.API_IMAGE }}:${{ env.IMAGE_TAG }})
-          echo "STUDIO_API_DOCKER_IMAGE=$STUDIO_API_DOCKER_IMAGE" >> $GITHUB_ENV
-
       - name: Get digest (UI)
         run: |
           docker pull ${{ env.UI_IMAGE }}:${{ env.IMAGE_TAG }}
@@ -40,9 +33,8 @@ jobs:
           STUDIO_UI_DOCKER_IMAGE=$(docker image inspect --format='{{index .RepoDigests 0}}' ${{ env.UI_IMAGE }}:${{ env.IMAGE_TAG }})
           echo "STUDIO_UI_DOCKER_IMAGE=$STUDIO_UI_DOCKER_IMAGE" >> $GITHUB_ENV
 
-      - name: Echo the Docker Images
+      - name: Echo the Docker Image
         run: |
-          echo "API image: $STUDIO_API_DOCKER_IMAGE"
           echo " UI image: $STUDIO_UI_DOCKER_IMAGE"
 
       - name: Code Checkout
@@ -58,14 +50,6 @@ jobs:
           git branch --set-upstream-to=origin/main
           git pull
 
-      - name: Update API Docker Image
-        run: |
-          npm install -g yaml-cli
-          cd repo/applications/apicurio-studio/
-          yaml set deployment-api.yaml spec.template.spec.containers.0.image ${{ env.STUDIO_API_DOCKER_IMAGE }} > deployment-api-NEW.yaml
-          rm deployment-api.yaml
-          mv deployment-api-NEW.yaml deployment-api.yaml
-
       - name: Update UI Docker Image
         run: |
           cd repo/applications/apicurio-studio/
@@ -76,8 +60,6 @@ jobs:
       - name: Verify Changed Deployment
         run: |
           cd repo
-          echo "---"
-          cat applications/apicurio-studio/deployment-api.yaml
           echo "---"
           cat applications/apicurio-studio/deployment-ui.yaml
           echo "---"
