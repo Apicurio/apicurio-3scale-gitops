@@ -58,9 +58,12 @@ jobs:
           git branch --set-upstream-to=origin/main
           git pull
 
-      - name: Update API Docker Image
+      - name: Install yaml-cli
         run: |
           npm install -g yaml-cli
+
+      - name: Update API Docker Image
+        run: |
           cd repo/applications/apicurio-registry/
           yaml set deployment-api.yaml spec.template.spec.containers.0.image ${{ env.REGISTRY_API_DOCKER_IMAGE }} > deployment-api-NEW.yaml
           rm deployment-api.yaml
