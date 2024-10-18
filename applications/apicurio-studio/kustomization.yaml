@@ -2,9 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - rds-external-secrets.yaml
-  - deployment-api.yaml
-  - service-api.yaml
-  - route-api.yaml
   - deployment-ui.yaml
   - service-ui.yaml
   - route-ui.yaml

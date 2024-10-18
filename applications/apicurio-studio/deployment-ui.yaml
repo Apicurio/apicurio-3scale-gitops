@@ -25,8 +25,8 @@ spec:
               containerPort: 8080
               protocol: TCP
           env:
-            - name: APICURIO_STUDIO_API_URL
-              value: 'https://studio-api.dev.apicur.io/apis/studio/v1'
+            - name: APICURIO_REGISTRY_API_URL
+              value: 'https://registry-api.dev.apicur.io/apis/registry/v3'
           resources:
             limits:
               cpu: 200m
