@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - image: >-
-            quay.io/apicurio/apicurio-studio-ui@sha256:d2b6880a7b6a52ce60321ad80fd3c4cf2238fb2b562fbdbeb0e6aa7d0ce8282f
+            quay.io/apicurio/apicurio-studio-ui@sha256:6109b81bb66495708008691a6f8b3c06e561beb3f917fe09568a7557c9021211
           name: apicurio-studio-ui
           ports:
             - name: web
@@ -27,9 +27,8 @@ spec:
           env:
             - name: APICURIO_REGISTRY_API_URL
               value: 'https://registry-api.dev.apicur.io/apis/registry/v3'
-
             - name: APICURIO_AUTH_TYPE
-              value: 'oidc'
+              value: oidc
             - name: APICURIO_AUTH_URL
               value: 'https://sso.dev.apicur.io/realms/apicurio'
             - name: APICURIO_AUTH_CLIENT_ID
