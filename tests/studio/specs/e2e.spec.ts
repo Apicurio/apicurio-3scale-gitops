@@ -25,7 +25,7 @@ test("End to End Test (Studio)", async ({ page }) => {
 
     const now: string = `${Date.now()}`;
     const groupId: string = "e2e-test-group";
-    const draftId: string = `e2e-test-artifact-${now}`;
+    const draftId: string = `e2e-test-draft-${now}`;
     const version: string = "1.0";
     const name: string = `Test API`;
     const description: string = "A new, fantastic, OpenAPI API design.";
@@ -46,7 +46,7 @@ test("End to End Test (Studio)", async ({ page }) => {
     await page.locator("#next-wizard-page").click();
 
     // Make sure we redirected to the draft details page.
-    const expectedPageUrlPattern: RegExp = /.+\/drafts\/e2e-test-group\/e2e-test-api-[0-9]+\/1.0/;
+    const expectedPageUrlPattern: RegExp = /.+\/drafts\/e2e-test-group\/e2e-test-draft-[0-9]+\/1.0/;
     await expect(page).toHaveURL(expectedPageUrlPattern);
 
     // Click the Delete Draft button
