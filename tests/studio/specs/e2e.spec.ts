@@ -1,4 +1,7 @@
 import { test, expect } from "@playwright/test";
+import { OPENAPI_DATA } from "./data/openapi-simple";
+
+const OPENAPI_DATA_STR: string = JSON.stringify(OPENAPI_DATA, null, 4);
 
 const STUDIO_URL: string = process.env["STUDIO_URL"] || "http://localhost:8888";
 const USERNAME: string = process.env["TEST_USERNAME"] || "user";
@@ -18,34 +21,41 @@ test("End to End Test (Studio)", async ({ page }) => {
     // Should then redirect to Studio
     await expect(page).toHaveTitle(/Apicurio Studio/);
 
-    expect(page.getByTestId("btn-create-design")).toBeDefined();
+    expect(page.getByTestId("btn-toolbar-create-draft")).toBeDefined();
 
-    const name: string = `TestAvro_${Date.now()}`;
-    const description: string = "A new Avro schema.";
+    const now: string = `${Date.now()}`;
+    const groupId: string = "e2e-test-group";
+    const draftId: string = `e2e-test-artifact-${now}`;
+    const version: string = "1.0";
+    const name: string = `Test API`;
+    const description: string = "A new, fantastic, OpenAPI API design.";
 
-    // Click the "Create design" button
-    await page.getByTestId("btn-create-design").click();
+    // Click the "Create draft" button
+    await page.getByTestId("btn-toolbar-create-draft").click();
+    await expect(page.getByTestId("create-draft-modal-group")).toHaveValue("");
 
-    // Fill out the form
-    await page.getByTestId("text-design-name").fill(name);
-    await page.getByTestId("textarea-design-description").fill(description);
-    // Set the type to Avro
-    await page.getByTestId("select-design-type").click();
-    await page.getByTestId("select-design-type-item-ASYNCAPI").click();
+    // Create a new draft
+    await page.getByTestId("create-draft-modal-group").fill(groupId);
+    await page.getByTestId("create-draft-modal-id").fill(draftId);
+    await page.getByTestId("create-draft-modal-version").fill(version);
+    await page.getByText("Next").click();
+    await page.locator("#draft-content").fill(OPENAPI_DATA_STR);
+    await page.getByText("Next").click();
+    await page.getByTestId("create-draft-modal-draft-metadata-name").fill(name);
+    await page.getByTestId("create-draft-modal-draft-metadata-description").fill(description);
+    await page.locator("#next-wizard-page").click();
 
-    // Click the Create button
-    await page.getByTestId("btn-modal-create").click();
+    // Make sure we redirected to the draft details page.
+    const expectedPageUrlPattern: RegExp = /.+\/drafts\/e2e-test-group\/e2e-test-api-[0-9]+\/1.0/;
+    await expect(page).toHaveURL(expectedPageUrlPattern);
 
-    // Make sure we redirected to the editor page
-    await expect(page).toHaveURL(/.+\/designs\/.+\/editor/);
-    expect(page.locator(".editor-context-breadcrumbs").getByText(name)).toBeDefined();
+    // Click the Delete Draft button
+    await page.getByTestId("draft-btn-delete").click();
 
-    // Delete the design
-    await page.getByTestId("select-actions").click();
-    await page.getByTestId("action-delete").click();
-    expect(page.getByText("Delete design?")).toBeDefined();
-    await page.getByTestId("checkbox-confirm-delete").click();
-    await page.getByTestId("btn-modal-delete").click();
+    // Click the Delete button on the resulting confirmation modal
+    await page.getByTestId("modal-btn-delete").click();
 
-    expect(page.getByText("API and Schema Designs")).toBeDefined();
+    // Make sure we redirected to the editor page.
+    expectedPageUrlPattern = /.+\/drafts/;
+    await expect(page).toHaveURL(expectedPageUrlPattern);
 });
