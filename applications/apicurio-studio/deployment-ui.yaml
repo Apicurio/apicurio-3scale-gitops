@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - image: >-
-            quay.io/apicurio/apicurio-studio-ui@sha256:82434370009b1a3e59e4501f0560a844f28d7af19e2447f96446305bb559dc8e
+            quay.io/apicurio/apicurio-studio-ui@sha256:4f77361087a4cd01476b187d2256939b1ed6b4d3dfcf9a72ec25a35f7afc2203
           name: apicurio-studio-ui
           ports:
             - name: web
