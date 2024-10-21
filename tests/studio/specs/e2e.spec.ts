@@ -46,7 +46,7 @@ test("End to End Test (Studio)", async ({ page }) => {
     await page.locator("#next-wizard-page").click();
 
     // Make sure we redirected to the draft details page.
-    const expectedPageUrlPattern: RegExp = /.+\/drafts\/e2e-test-group\/e2e-test-draft-[0-9]+\/1.0/;
+    let expectedPageUrlPattern: RegExp = /.+\/drafts\/e2e-test-group\/e2e-test-draft-[0-9]+\/1.0/;
     await expect(page).toHaveURL(expectedPageUrlPattern);
 
     // Click the Delete Draft button
