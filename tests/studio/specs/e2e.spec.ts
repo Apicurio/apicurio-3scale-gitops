@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
-import { OPENAPI_DATA } from "./data/openapi-simple";
+//import { OPENAPI_DATA } from "./data/openapi-simple";
 
-const OPENAPI_DATA_STR: string = JSON.stringify(OPENAPI_DATA, null, 4);
+//const OPENAPI_DATA_STR: string = JSON.stringify(OPENAPI_DATA, null, 4);
 
 const STUDIO_URL: string = process.env["STUDIO_URL"] || "http://localhost:8888";
 const USERNAME: string = process.env["TEST_USERNAME"] || "user";
@@ -39,7 +39,7 @@ test("End to End Test (Studio)", async ({ page }) => {
     await page.getByTestId("create-draft-modal-id").fill(draftId);
     await page.getByTestId("create-draft-modal-version").fill(version);
     await page.getByText("Next").click();
-    await page.locator("#draft-content").fill(OPENAPI_DATA_STR);
+    await page.getByTestId("openapi_3_blank").click();
     await page.getByText("Next").click();
     await page.getByTestId("create-draft-modal-draft-metadata-name").fill(name);
     await page.getByTestId("create-draft-modal-draft-metadata-description").fill(description);
