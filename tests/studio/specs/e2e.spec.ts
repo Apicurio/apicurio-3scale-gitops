@@ -50,7 +50,8 @@ test("End to End Test (Studio)", async ({ page }) => {
     await expect(page).toHaveURL(expectedPageUrlPattern);
 
     // Click the Delete Draft button
-    await page.getByTestId("draft-btn-delete").click();
+    await page.getByTestId("draft-actions-dropdown").click();
+    await page.getByTestId("delete-draft").click();
 
     // Click the Delete button on the resulting confirmation modal
     await page.getByTestId("modal-btn-delete").click();
