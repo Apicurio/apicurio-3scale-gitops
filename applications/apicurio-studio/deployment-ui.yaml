@@ -35,6 +35,8 @@ spec:
               value: studio-ui
             - name: APICURIO_AUTH_REDIRECT_URL
               value: 'https://studio.dev.apicur.io'
+            - name: APICURIO_REGISTRY_UI_URL
+              value: 'https://registry.dev.apicur.io'
           resources:
             limits:
               cpu: 200m
