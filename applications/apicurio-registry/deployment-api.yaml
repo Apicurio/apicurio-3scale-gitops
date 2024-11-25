@@ -46,8 +46,6 @@ spec:
               value: INFO
             - name: QUARKUS_PROFILE
               value: prod
-            - name: APICURIO_CONFIG_CACHE_ENABLED
-              value: 'true'
             - name: APICURIO_REST_DELETION_GROUP_ENABLED
               value: 'true'
             - name: APICURIO_REST_DELETION_ARTIFACT_ENABLED
@@ -94,8 +92,6 @@ spec:
             - name: APICURIO_DATASOURCE_URL
               value: >-
                 jdbc:postgresql://${APICURIO_DATASOURCE_HOST}:${APICURIO_DATASOURCE_PORT}/${APICURIO_DATABASE}
-            - name: APICURIO_APIS_DATE_FORMAT
-              value: 'yyyy-MM-dd''T''HH:mm:ssZ'
           resources:
             limits:
               cpu: 500m
