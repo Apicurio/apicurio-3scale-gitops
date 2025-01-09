@@ -52,7 +52,7 @@ jobs:
         if: always()
         run: |
           PAYLOAD='{"status": "success", "message": "test message", "link": "https://www.google.com", "repository": "apicurio-3scale-gitops"}'
-          curl -X POST -H "Content-Type: application/json" -d $PAYLOAD ${{ secrets.SLACK_NOTIFICATION_WEBHOOK }}
+          curl -X POST -H "Content-Type: application/json" -d "$PAYLOAD" ${{ secrets.SLACK_NOTIFICATION_WEBHOOK }}
 
       - name: Google Chat Notification (Error)
         if: failure()
