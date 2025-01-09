@@ -52,7 +52,9 @@ jobs:
         if: always()
         run: |
           MESSAGE="Studio integration tests passed successfully."
-          PAYLOAD="{\"status\": \"success\", \"message\": \"$MESSAGE\", \"link\": \"https://www.google.com\", \"repository\": \"apicurio-3scale-gitops\"}"
+          REPO="${{ github.repository }}"
+          LINK="https://github.com/$REPO/actions/runs/${{ github.run_id }}"
+          PAYLOAD="{\"workflow\": \"${{ github.workflow }}\", \"${{ job.status }}\": \"success\", \"message\": \"$MESSAGE\", \"link\": \"$LINK\", \"repository\": \"$REPO\"}"
           curl -X POST -H "Content-Type: application/json" -d "$PAYLOAD" ${{ secrets.SLACK_NOTIFICATION_WEBHOOK }}
 
       - name: Google Chat Notification (Error)
