@@ -51,7 +51,7 @@ jobs:
       - name: Slack Notification (Always)
         if: always()
         run: |
-          MESSAGE="Nightly Studio integration tests passed successfully."
+          MESSAGE="Nightly Studio integration tests completed with status: ${{ job.status }}"
           REPO="${{ github.repository }}"
           LINK="https://github.com/$REPO/actions/runs/${{ github.run_id }}"
           PAYLOAD="{\"workflow\": \"${{ github.workflow }}\", \"status\": \"${{ job.status }}\", \"message\": \"$MESSAGE\", \"link\": \"$LINK\", \"repository\": \"$REPO\"}"
