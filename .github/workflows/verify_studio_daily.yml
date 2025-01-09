@@ -50,10 +50,9 @@ jobs:
 
       - name: Slack Notification (Always)
         if: always()
-        uses: magdemajt/trigger-webhook@v1
-        with:
-          url: ${{ secrets.STUDIO_URL }}
-          json: '{"status": "success", "message": "test message", "link": "https://www.google.com", "repository": "apicurio-3scale-gitops"}' # optional
+        run: |
+          PAYLOAD='{"status": "success", "message": "test message", "link": "https://www.google.com", "repository": "apicurio-3scale-gitops"}'
+          curl -X POST -H "Content-Type: application/json" -d $PAYLOAD ${{ secrets.STUDIO_URL }}
 
       - name: Google Chat Notification (Error)
         if: failure()
