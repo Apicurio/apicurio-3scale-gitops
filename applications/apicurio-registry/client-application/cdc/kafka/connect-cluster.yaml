@@ -6,7 +6,12 @@ metadata:
   annotations:
     strimzi.io/use-connector-resources: "true"
 spec:
-  version: 3.7.0
+  spec:
+    logging:
+      type: inline
+      loggers:
+        io.apicurio: TRACE
+  version: 3.9.0
   replicas: 1
   bootstrapServers: kafka-cluster-kafka-bootstrap:9093
   tls:
@@ -34,8 +39,7 @@ spec:
             url: https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/2.3.3.Final/debezium-connector-postgres-2.3.3.Final-plugin.tar.gz
             sha512sum: a67963e1088c99db1e38a85c68507c171054b7238447f5aa1fe2cbdd55946d498c030b4b82dc005d55cd23a7cded0494d8fff0fdc59c4787098fe590bddb2990
           - type: tgz
-            url: https://repo1.maven.org/maven2/io/apicurio/apicurio-registry-distro-connect-converter/2.3.1.Final/apicurio-registry-distro-connect-converter-2.3.1.Final.tar.gz
-            sha512sum: eee79c68bae272bef6f720fa5af6b583ed16cc2c5aa2da96e464b99ade677abd290561b97d3d9279ed158da216a78d15aa4f9495614517915b6eac29b13cfb56
+            url: https://repo1.maven.org/maven2/io/apicurio/apicurio-registry-distro-connect-converter/3.0.6/apicurio-registry-distro-connect-converter-3.0.6.tar.gz
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role

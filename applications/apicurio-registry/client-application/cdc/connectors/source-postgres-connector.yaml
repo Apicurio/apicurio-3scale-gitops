@@ -18,22 +18,18 @@ spec:
     topic.prefix: "server1"
     schema.include.list: "inventory"
     key.converter: "io.apicurio.registry.utils.converter.AvroConverter"
-    key.converter.apicurio.registry.url: "https://registry-api.dev.apicur.io"
+    key.converter.apicurio.registry.url: "https://registry-api.dev.apicur.io/apis/registry/v3/"
     key.converter.apicurio.registry.auto-register: "true"
     key.converter.apicurio.registry.find-latest: "true"
-    key.converter.apicurio.registry.use-id: "contentId"
-    key.converter.apicurio.registry.as-confluent: "true"
-    key.converter.apicurio.auth.client.id: ${secrets:rhaf-apicurio/probe-application-credentials:client-id}
-    key.converter.apicurio.auth.client.secret: ${secrets:rhaf-apicurio/probe-application-credentials:client-secret}
-    key.converter.apicurio.auth.service.token.endpoint: "https://sso.dev.apicur.io/realms/apicurio/protocol/openid-connect/token"
-    value.converter.apicurio.auth.client.id: ${secrets:rhaf-apicurio/probe-application-credentials:client-id}
-    value.converter.apicurio.auth.client.secret: ${secrets:rhaf-apicurio/probe-application-credentials:client-secret}
-    value.converter.apicurio.auth.service.token.endpoint: "https://sso.dev.apicur.io/realms/apicurio/protocol/openid-connect/token"
+    key.converter.apicurio.registry.auth.client.id: ${secrets:rhaf-apicurio/probe-application-credentials:client-id}
+    key.converter.apicurio.registry.auth.client.secret: ${secrets:rhaf-apicurio/probe-application-credentials:client-secret}
+    key.converter.apicurio.registry.auth.service.token.endpoint: "https://sso.dev.apicur.io/realms/apicurio/protocol/openid-connect/token"
+    value.converter.apicurio.registry.auth.client.id: ${secrets:rhaf-apicurio/probe-application-credentials:client-id}
+    value.converter.apicurio.registry.auth.client.secret: ${secrets:rhaf-apicurio/probe-application-credentials:client-secret}
+    value.converter.apicurio.registry.auth.service.token.endpoint: "https://sso.dev.apicur.io/realms/apicurio/protocol/openid-connect/token"
     value.converter: "io.apicurio.registry.utils.converter.AvroConverter"
-    value.converter.apicurio.registry.url: "https://registry-api.dev.apicur.io"
+    value.converter.apicurio.registry.url: "https://registry-api.dev.apicur.io/apis/registry/v3/"
     value.converter.apicurio.registry.auto-register: "true"
     value.converter.apicurio.registry.find-latest: "true"
-    value.converter.apicurio.registry.as-confluent: "true"
-    value.converter.apicurio.registry.use-id: "contentId"
     schema.name.adjustment.mode: "avro"
     field.name.adjustment.mode: "avro"
