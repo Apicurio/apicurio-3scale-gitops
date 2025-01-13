@@ -2,11 +2,13 @@ apiVersion: kafka.strimzi.io/v1beta2
 kind: Kafka
 metadata:
   name: kafka-cluster
+  strimzi.io/kraft: enabled
+  strimzi.io/node-pools: enabled
   labels:
     app.kubernetes.io/part-of: cloud
 spec:
   kafka:
-    version: 3.7.0
+    version: 3.9.0
     replicas: 1
     listeners:
       - name: plain
@@ -27,7 +29,7 @@ spec:
       transaction.state.log.min.isr: 1
       default.replication.factor: 1
       min.insync.replicas: 1
-      inter.broker.protocol.version: "3.6"
+      inter.broker.protocol.version: "3.9"
     storage:
       type: ephemeral
   zookeeper:
