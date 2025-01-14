@@ -17,8 +17,8 @@ spec:
     transforms: "outbox"
     transforms.outbox.type: "io.debezium.transforms.outbox.EventRouter"
     connector.class": "io.debezium.connector.postgresql.PostgresConnector"
-    database.hostname: ${secrets:rhaf-apicurio/dev-eng-mas-apicurio-rds-pgsql-apicurio-registry-credentials:host}
-    database.port: ${secrets:rhaf-apicurio/dev-eng-mas-apicurio-rds-pgsql-apicurio-registry-credentials:port}
-    database.user: ${secrets:rhaf-apicurio/dev-eng-mas-apicurio-rds-pgsql-apicurio-registry-credentials:user}
-    database.password: ${secrets:rhaf-apicurio/dev-eng-mas-apicurio-rds-pgsql-apicurio-registry-credentials:password}
-    database.dbname: ${secrets:rhaf-apicurio/dev-eng-mas-apicurio-rds-pgsql-apicurio-registry-credentials:database}
+    database.hostname: ${secrets:apicurio/dev-eng-apicurio-rds-pgsql-apicurio-registry-credentials:host}
+    database.port: ${secrets:apicurio/dev-eng-apicurio-rds-pgsql-apicurio-registry-credentials:port}
+    database.user: ${secrets:apicurio/dev-eng-apicurio-rds-pgsql-apicurio-registry-credentials:user}
+    database.password: ${secrets:apicurio/dev-eng-apicurio-rds-pgsql-apicurio-registry-credentials:password}
+    database.dbname: ${secrets:apicurio/dev-eng-apicurio-rds-pgsql-apicurio-registry-credentials:database}

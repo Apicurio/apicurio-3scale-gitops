@@ -8,11 +8,11 @@ spec:
   class: io.debezium.connector.postgresql.PostgresConnector
   tasksMax: 1
   config:
-    database.hostname: ${secrets:rhaf-apicurio/rds-apicurio-registry-client-application-credentials:host}
-    database.port: ${secrets:rhaf-apicurio/rds-apicurio-registry-client-application-credentials:port}
-    database.user: ${secrets:rhaf-apicurio/rds-apicurio-registry-client-application-credentials:user}
-    database.password: ${secrets:rhaf-apicurio/rds-apicurio-registry-client-application-credentials:password}
-    database.dbname: ${secrets:rhaf-apicurio/rds-apicurio-registry-client-application-credentials:database}
+    database.hostname: ${secrets:apicurio/rds-apicurio-registry-client-application-credentials:host}
+    database.port: ${secrets:apicurio/rds-apicurio-registry-client-application-credentials:port}
+    database.user: ${secrets:apicurio/rds-apicurio-registry-client-application-credentials:user}
+    database.password: ${secrets:apicurio/rds-apicurio-registry-client-application-credentials:password}
+    database.dbname: ${secrets:apicurio/rds-apicurio-registry-client-application-credentials:database}
     heartbeat.interval.ms: "1000"
     plugin.name: "pgoutput"
     topic.prefix: "server1"
@@ -21,11 +21,11 @@ spec:
     key.converter.apicurio.registry.url: "https://registry-api.dev.apicur.io/apis/registry/v3"
     key.converter.apicurio.registry.auto-register: "true"
     key.converter.apicurio.registry.find-latest: "true"
-    key.converter.apicurio.registry.auth.client.id: ${secrets:rhaf-apicurio/probe-application-credentials:client-id}
-    key.converter.apicurio.registry.auth.client.secret: ${secrets:rhaf-apicurio/probe-application-credentials:client-secret}
+    key.converter.apicurio.registry.auth.client.id: ${secrets:apicurio/probe-application-credentials:client-id}
+    key.converter.apicurio.registry.auth.client.secret: ${secrets:apicurio/probe-application-credentials:client-secret}
     key.converter.apicurio.registry.auth.service.token.endpoint: "https://sso.dev.apicur.io/realms/apicurio/protocol/openid-connect/token"
-    value.converter.apicurio.registry.auth.client.id: ${secrets:rhaf-apicurio/probe-application-credentials:client-id}
-    value.converter.apicurio.registry.auth.client.secret: ${secrets:rhaf-apicurio/probe-application-credentials:client-secret}
+    value.converter.apicurio.registry.auth.client.id: ${secrets:apicurio/probe-application-credentials:client-id}
+    value.converter.apicurio.registry.auth.client.secret: ${secrets:apicurio/probe-application-credentials:client-secret}
     value.converter.apicurio.registry.auth.service.token.endpoint: "https://sso.dev.apicur.io/realms/apicurio/protocol/openid-connect/token"
     value.converter: "io.apicurio.registry.utils.converter.AvroConverter"
     value.converter.apicurio.registry.url: "https://registry-api.dev.apicur.io/apis/registry/v3"

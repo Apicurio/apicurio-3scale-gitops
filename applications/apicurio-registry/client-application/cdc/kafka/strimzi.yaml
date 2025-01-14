@@ -4,7 +4,7 @@ metadata:
   name: strimzi
 spec:
   targetNamespaces:
-    - rhaf-apicurio
+    - apicurio
 ---
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
