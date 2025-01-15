@@ -1,6 +1,8 @@
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaConnector
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   name: postgres-connector0
   labels:
     strimzi.io/cluster: kafka-connect-cluster

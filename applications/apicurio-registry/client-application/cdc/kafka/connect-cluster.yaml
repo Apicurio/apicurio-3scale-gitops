@@ -5,6 +5,7 @@ metadata:
   name: kafka-connect-cluster
   annotations:
     strimzi.io/use-connector-resources: "true"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   spec:
     logging:
