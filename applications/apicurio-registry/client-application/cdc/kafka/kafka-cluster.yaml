@@ -1,6 +1,8 @@
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaNodePool
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   name: controller
   labels:
     strimzi.io/cluster: kafka-cluster
@@ -18,6 +20,8 @@ spec:
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaNodePool
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   name: broker
   labels:
     strimzi.io/cluster: kafka-cluster
@@ -39,6 +43,7 @@ metadata:
   annotations:
     strimzi.io/node-pools: enabled
     strimzi.io/kraft: enabled
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   kafka:
     version: 3.8.0

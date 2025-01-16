@@ -5,6 +5,7 @@ metadata:
   name: kafka-connect-cluster
   annotations:
     strimzi.io/use-connector-resources: "true"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   spec:
     logging:
@@ -31,7 +32,7 @@ spec:
   build:
     output:
       type: docker
-      image: image-registry.openshift-image-registry.svc:5000/rhaf-apicurio/debezium-connect:latest
+      image: image-registry.openshift-image-registry.svc:5000/apicurio/debezium-connect:latest
     plugins:
       - name: debezium-connector-postgres
         artifacts:
@@ -58,7 +59,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: kafka-connect-cluster-connect
-    namespace: rhaf-apicurio
+    namespace: apicurio
 roleRef:
   kind: Role
   name: connector-configuration-role
