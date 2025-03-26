@@ -6,9 +6,9 @@ on:
     secrets:
       ACCESS_TOKEN:
         required: true
-      GOOGLE_CHAT_WEBHOOK:
+      SLACK_NOTIFICATION_WEBHOOK:
         required: true
-      GOOGLE_CHAT_WEBHOOK_ERRORS:
+      SLACK_ERROR_WEBHOOK:
         required: true
 
 jobs:
