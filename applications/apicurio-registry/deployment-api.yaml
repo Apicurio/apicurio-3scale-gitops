@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - image: >-
-            quay.io/apicurio/apicurio-registry@sha256:2a2df5a0968cfa9fa65921ed5b1ffaf759a070e258e22f661f2847b06478b183
+            quay.io/apicurio/apicurio-registry@sha256:a824f709b3b99863c26a94bcc2965a30b428e03fd244c437624bd4f2130203ee
           name: apicurio-registry-api
           ports:
             - name: web
